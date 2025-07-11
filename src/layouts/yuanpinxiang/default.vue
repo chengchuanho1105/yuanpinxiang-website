@@ -6,12 +6,14 @@ import Navbar from '@/components/layouts/navbar/Navbar.vue'
 import Banner from '@/components/layouts/Banner.vue'
 import Breadcrumb from '@/components/layouts/Breadcrumb.vue'
 import Footer from '@/components/layouts/Footer.vue'
+import UnderConstructionBanner from '@/components/UnderConstructionBanner.vue'
 </script>
 
 <template>
   <div class="min-h-screen bg-sky-50 dark:bg-sky-950">
     <header>
       <Navbar />
+      <UnderConstructionBanner />
       <Banner>
         <img src="/src/assets/media/og-img/yuanpinxiang/og-img.png"
           class="absolute inset-0 w-full h-full object-cover" />

@@ -2,7 +2,7 @@ import '@/assets/css/public/main.css'
 
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-AOS.init({ duration: 800, once: false, offset: 50 })
+AOS.init({ duration: 500, once: false, offset: 50 })
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
