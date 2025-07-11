@@ -33,9 +33,9 @@ watch(() => route.path, () => {
     enter-to-class="opacity-100 translate-y-0" leave-active-class="transition-all duration-300 ease-in"
     leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 -translate-y-full">
     <div v-if="isVisible"
-      class="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 shadow-lg">
+      class="fixed top-0 left-0 right-0 z-40 bg-gradient-to-r from-orange-500 via-pink-700 to-red-500 shadow-lg">
       <div class="max-w-3xl mx-auto px-4 py-3">
-        <div class="grid grid-cols-5 items-center justify-center relative">
+        <div class="grid grid-cols-7 items-center justify-center relative">
 
           <div class="col-span-1 flex justify-center">
             <!-- 圖示 -->
@@ -49,10 +49,10 @@ watch(() => route.path, () => {
             </div>
           </div>
 
-          <div class="col-span-3 text-center">
-            <p class="text-sm font-medium text-white ">
-              <span class="font-bold">本網頁正在建置中</span>
-              <span class="ml-2">資訊尚未校準，請稍後再訪</span>
+          <div class="col-span-5 text-center">
+            <p class="text-base font-medium text-white ">
+              本網頁正在建置中<br>
+              資訊尚未校準，請稍後再訪
             </p>
           </div>
 
