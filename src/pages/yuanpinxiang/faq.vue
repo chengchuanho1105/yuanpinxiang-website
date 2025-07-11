@@ -2,68 +2,82 @@
 defineOptions({ name: 'ChuanLife-Faq' })
 
 import { ref, onMounted } from 'vue'
-import { fetchFaqFromGoogleSheets, getFallbackFaqData } from '@/utils/googleSheets'
+import { loadCsvData } from '@/utils/googleSheets'
+
+const FAQ_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTBfQ7Y7BhxlwA-9BJ7FFLbMNLxhZh_Q8gHe5tXuwhk62Ofy6BX1lSVuyZybzQTLFvz3TeARDlEpj3_/pub?gid=0&single=true&output=csv'
 
 interface FaqItem {
   question: string
   answer: string
 }
-
 interface FaqList {
   category: string
   items: FaqItem[]
 }
 
-// 響應式數據
 const faqList = ref<FaqList[]>([])
 const loading = ref(true)
 const error = ref<string | null>(null)
-
-// 每個分類各自記錄展開的 index
 const openIndexes = ref<Record<string, number | null>>({})
 
 function toggle(category: string, idx: number) {
   openIndexes.value[category] = openIndexes.value[category] === idx ? null : idx
 }
 
-// 初始化展開狀態
 const initializeOpenIndexes = (data: FaqList[]) => {
   data.forEach(list => {
     openIndexes.value[list.category] = null
   })
 }
 
-// 載入 FAQ 數據
-const loadFaqData = async () => {
-  try {
-    loading.value = true
-    error.value = null
+// FAQ 數據映射函式
+const mapFaqItem = (item: Record<string, string>) => ({
+  category: item.category || '其他',
+  question: item.question || '',
+  answer: item.answer || ''
+})
 
-    // 嘗試從 Google Sheets 獲取數據
-    const data = await fetchFaqFromGoogleSheets()
+// 過濾和分組邏輯
+const processFaqData = (mappedData: ReturnType<typeof mapFaqItem>[]): FaqList[] => {
+  // 過濾掉空的問題或答案
+  const filteredData = mappedData.filter(item => item.question && item.answer)
 
-    if (data.length > 0) {
-      faqList.value = data
-    } else {
-      // 如果 Google Sheets 沒有數據，使用備用數據
-      faqList.value = getFallbackFaqData()
+  // 按分類分組
+  const grouped: Record<string, FaqItem[]> = {}
+  filteredData.forEach(item => {
+    if (!grouped[item.category]) {
+      grouped[item.category] = []
     }
+    grouped[item.category].push({
+      question: item.question,
+      answer: item.answer
+    })
+  })
 
-    // 初始化展開狀態
+  return Object.entries(grouped).map(([category, items]) => ({
+    category,
+    items
+  }))
+}
+
+const loadFaqData = async () => {
+  loading.value = true
+  error.value = null
+  try {
+    faqList.value = await loadCsvData(
+      FAQ_CSV_URL,
+      mapFaqItem,
+      processFaqData,
+    )
     initializeOpenIndexes(faqList.value)
-
-  } catch (err) {
-    console.error('Failed to load FAQ data:', err)
+  } catch {
     error.value = '無法載入 FAQ 數據，請稍後再試'
-    // 使用備用數據
-    faqList.value = getFallbackFaqData()
-    initializeOpenIndexes(faqList.value)
+    faqList.value = []
   } finally {
     loading.value = false
   }
 }
 
-// 組件掛載時載入數據
 onMounted(() => {
   loadFaqData()
 })

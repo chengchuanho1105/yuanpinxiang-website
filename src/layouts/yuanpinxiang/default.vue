@@ -17,8 +17,8 @@ import Footer from '@/components/layouts/Footer.vue'
           class="absolute inset-0 w-full h-full object-cover" />
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="relative z-10 flex flex-col items-center justify-center h-full">
-          <h1 class="text-4xl md:text-6xl font-extrabold text-white">品牌故事</h1>
-          <p class="mt-4 text-lg text-white/80">用圖片營造氛圍</p>
+          <h1 class="text-4xl md:text-6xl font-extrabold text-white"></h1>
+          <p class="mt-4 text-lg text-white/80"></p>
         </div>
       </Banner>
       <Breadcrumb :style="'default'" />

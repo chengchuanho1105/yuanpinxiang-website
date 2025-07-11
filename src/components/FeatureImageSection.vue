@@ -6,7 +6,8 @@ const props = withDefaults(defineProps<{
   description: string
   buttonText: string
   buttonLink?: string
-  align?: 'left' | 'right'
+  // 空值預設為 left
+  align?: 'left' | 'right' | undefined
   bgImage?: string
   aos?: string
   scrollDown?: boolean
@@ -19,18 +20,49 @@ const bgUrl = computed(() => props.bgImage || 'https://picsum.photos/1920/1080?r
 const roundedClass = computed(() => props.align === 'right' ? 'rounded-none md:rounded-l-full' : 'rounded-none md:rounded-r-full')
 const aosType = computed(() => props.aos || (props.align === 'right' ? 'fade-left' : 'fade-right'))
 const htmlDescription = computed(() => props.description)
-const scrollDown = computed(() => props.scrollDown)
 
 const sectionRef = ref<HTMLElement | null>(null)
+const isScrolling = ref(false)
+const scrollTimeout = ref<number | null>(null)
 
 const scrollToNextSection = () => {
+  // 防止重複點擊
+  if (isScrolling.value) return
+
   if (!sectionRef.value) return
+
+  isScrolling.value = true
+
+  // 清除之前的 timeout
+  if (scrollTimeout.value) {
+    clearTimeout(scrollTimeout.value)
+  }
+
   const allSections = Array.from(document.querySelectorAll('section'))
   const idx = allSections.findIndex(s => s === sectionRef.value)
+
   if (idx !== -1 && allSections[idx + 1]) {
     allSections[idx + 1].scrollIntoView({ behavior: 'smooth' })
+
+    // 延遲重置狀態，避免快速重複點擊
+    scrollTimeout.value = window.setTimeout(() => {
+      isScrolling.value = false
+    }, 1000) // 1秒防抖
+  } else {
+    isScrolling.value = false
   }
 }
+
+// 組件卸載時清理 timeout
+const cleanup = () => {
+  if (scrollTimeout.value) {
+    clearTimeout(scrollTimeout.value)
+  }
+}
+
+// 在組件卸載時清理
+import { onUnmounted } from 'vue'
+onUnmounted(cleanup)
 </script>
 
 <template>
@@ -55,11 +87,14 @@ const scrollToNextSection = () => {
       <slot />
     </div>
     <!-- 向下瀏覽提示 -->
-    <div v-if="scrollDown"
-      class="absolute left-1/2 bottom-8 -translate-x-1/2 flex flex-col items-center z-20 select-none cursor-pointer"
-      @click="scrollToNextSection" data-aos="fade-up">
+    <div v-if="props.scrollDown"
+      class="absolute left-1/2 bottom-8 -translate-x-1/2 flex flex-col items-center z-20 select-none"
+      :class="{ 'cursor-pointer': !isScrolling, 'cursor-not-allowed opacity-50': isScrolling }"
+      @click="scrollToNextSection" @mousedown.prevent data-aos="fade-up">
       <span class="animate-bounce text-3xl text-sky-400 dark:text-sky-200">↓</span>
-      <span class="mt-1 text-xs text-sky-500 dark:text-sky-200 tracking-wide">向下瀏覽</span>
+      <span class="mt-1 text-xs text-sky-500 dark:text-sky-200 tracking-wide">
+        {{ isScrolling ? '滾動中...' : '向下瀏覽' }}
+      </span>
     </div>
   </section>
 </template>
