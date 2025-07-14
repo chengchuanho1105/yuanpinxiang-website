@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'ChuanLife-Home' })
+defineOptions({ name: 'YuanPinXiang-Home' })
 
 // ---------- Vue 核心工具函式 ----------
 import { ref, onMounted } from 'vue'
@@ -7,8 +7,10 @@ import { ref, onMounted } from 'vue'
 // ---------- 組件引入區（版面用） ----------
 import FeatureImageSection from '@/components/FeatureImageSection.vue'
 
-// ---------- 工具函式與資料來源 ----------
+// ---------- 工具函式 ----------
 import { loadCsvData } from '@/utils/googleSheets' // Google Sheets CSV 載入工具
+
+// ---------- 資料來源 ----------
 import localHomeHeroData from '@/data/pageData/home/heroData.json' // 本地輪播圖資料
 
 /** ========== Home Hero Data 資料處裡 ========== */
@@ -42,13 +44,23 @@ const mapHomeHeroData = (item: Record<string, string>): HomeHeroData => {
     align: (item.align === 'left' || item.align === 'right') ? item.align : 'left',
     bgImage: item.bgImage || '',
     aos: item.aos || '',
-    scrollDown: true,
+    scrollDown:
+      typeof item.scrollDown === 'string'
+        ? (item.scrollDown.trim().toLowerCase() === 'true'
+          ? true
+          : item.scrollDown.trim().toLowerCase() === 'false'
+            ? false
+            : undefined)
+        : typeof item.scrollDown === 'boolean'
+          ? item.scrollDown
+          : undefined,
   }
 }
 
 /** 5. 載入 Home Hero Data */
 const loadHomeHeroData = async () => {
-  homeHeroData.value = localHomeHeroData as HomeHeroData[]  // 立即顯示 Local Home Hero Data
+  // 立即顯示 Local Home Hero Data，並修正型別轉換問題
+  homeHeroData.value = (localHomeHeroData as unknown as HomeHeroData[])
   isUsingLocalHomeHeroData.value = true  // 保持使用 Local Home Hero Data
 
   /** 背景載入 Google Sheets Home Hero Data */

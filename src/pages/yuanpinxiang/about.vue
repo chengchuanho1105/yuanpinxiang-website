@@ -1,7 +1,122 @@
 <script setup lang="ts">
-defineOptions({ name: 'ChuanLife-About' })
+defineOptions({ name: 'YuanPinXiang-About' })
+
+// ---------- Vue 核心工具函式 ----------
+import { ref, onMounted } from 'vue'
+
+// ---------- 組件引入區（版面用） ----------
 import DecorSection from '@/components/DecorSection.vue'
-import { founderData, timelineData } from '@/pageData/about'
+
+// ---------- 工具函式 ----------
+import { loadCsvData } from '@/utils/googleSheets' // Google Sheets CSV 載入工具
+
+// ---------- 資料來源 ----------
+import localFounderData from '@/data/pageData/about/founderData.json' // 本地創辦人資料
+import localTimelineData from '@/data/pageData/about/timelineData.json' // 本地時間軸資料
+
+/** ========== About Founder Data 資料處裡 ========== */
+
+/** 1. About Founder Data 的資料格式 */
+interface FounderData {
+  name: string
+  title: string
+  image: string
+  description: string
+}
+
+/** 2. 定義 About Founder Data 初始狀態 */
+const founderData = ref<FounderData[]>(localFounderData as FounderData[])
+const isUsingLocalFounderData = ref(true)
+
+/** 3. 取得 About Founder Data CSV 來源 */
+const FOUNDERDATA_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT0JAe05EILkxbs3CewvbtO1vtEWXopFBjXEULscc-cwewafxH-CznTw56CIj6OVgbXZTbEQZU_R_Zw/pub?output=csv'
+
+/** 4. 定義 CSV 欄位轉換函式 */
+const mapFounderData = (item: Record<string, string>): FounderData => {
+  return {
+    name: item.name || '',
+    title: item.title || '',
+    image: item.image || '',
+    description: item.description || '',
+  }
+}
+
+/** 5. 載入 About Founder Data */
+const loadFounderData = async () => {
+  founderData.value = (localFounderData as unknown as FounderData[])
+  isUsingLocalFounderData.value = true
+
+  /** 背景載入 Google Sheets About Founder Data */
+  setTimeout(async () => {
+    const sheetData = await loadCsvData<FounderData, FounderData[]>(
+      FOUNDERDATA_CSV_URL,
+      mapFounderData,
+      undefined,
+      true // 使用快取
+    )
+    if (sheetData && sheetData.length > 0) {
+      founderData.value = sheetData
+      isUsingLocalFounderData.value = false
+    }
+  }, 500) // 0.5秒後開始背景載入
+}
+
+/** 6. 在頁面載入時，載入 Google Sheets About Founder Data */
+onMounted(() => {
+  loadFounderData()
+})
+
+/** ========== About Timeline Data 資料處裡 ========== */
+
+/** 1. About Timeline Data 的資料格式 */
+interface TimelineData {
+  icon: string
+  title: string
+  year: string
+  description: string
+}
+
+/** 2. 定義 About Timeline Data 初始狀態 */
+const timelineData = ref<TimelineData[]>(localTimelineData as TimelineData[])
+const isUsingLocalTimelineData = ref(true)
+
+/** 3. 取得 About Timeline Data CSV 來源 */
+const TIMELINEDATA_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTr-mZhPTt5ipLfLy0BJs9lwsUBWUDLJvzkSm73ZxXC-tP_8oFIg_EsC_7laWS7J0wBFS38uWa3E4e9/pub?output=csv'
+
+/** 4. 定義 CSV 欄位轉換函式 */
+const mapTimelineData = (item: Record<string, string>): TimelineData => {
+  return {
+    icon: item.icon || '',
+    title: item.title || '',
+    year: item.year || '',
+    description: item.description || '',
+  }
+}
+
+/** 5. 載入 About Timeline Data */
+const loadTimelineData = async () => {
+  timelineData.value = (localTimelineData as unknown as TimelineData[])
+  isUsingLocalTimelineData.value = true
+
+  /** 背景載入 Google Sheets About Timeline Data */
+  setTimeout(async () => {
+    const sheetData = await loadCsvData<TimelineData, TimelineData[]>(
+      TIMELINEDATA_CSV_URL,
+      mapTimelineData,
+      undefined,
+      true // 使用快取
+    )
+    if (sheetData && sheetData.length > 0) {
+      timelineData.value = sheetData
+      isUsingLocalTimelineData.value = false
+    }
+  }, 500) // 0.5秒後開始背景載入
+}
+
+/** 6. 在頁面載入時，載入 Google Sheets About Timeline Data */
+onMounted(() => {
+  loadTimelineData()
+})
 </script>
 
 <template>
@@ -9,20 +124,19 @@ import { founderData, timelineData } from '@/pageData/about'
     <!-- 區塊1：創辦人介紹（AOS動畫版，最佳化疊底大字顏色與主標題可讀性） -->
     <DecorSection main-title="創辦人介紹" en-title="FOUNDER">
       <div class="relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
-        <img src="https://picsum.photos/400/400?random=10" alt="創辦人"
+        <img :src="founderData[0].image" alt="創辦人"
           class="w-48 h-48 md:w-64 md:h-64 rounded-full object-cover shadow-lg mb-6 md:mb-0 z-10" data-aos="zoom-in" />
         <div class="flex-1 z-10" data-aos="fade-up">
           <h3 class="text-xl font-semibold text-indigo-900 dark:text-indigo-100 mb-2"
             style="text-shadow:0 1px 6px #fff6;">{{ founderData[0].title }} {{ founderData[0].name }}</h3>
-          <p class="text-lg text-gray-700 dark:text-gray-200 leading-relaxed" style="text-shadow:0 1px 6px #fff4;">
-            {{ founderData[0].desc }}
-          </p>
+          <p class="text-lg text-gray-700 dark:text-gray-200 leading-relaxed" style="text-shadow:0 1px 6px #fff4;"
+            v-html="founderData[0].description"></p>
         </div>
       </div>
     </DecorSection>
 
     <!-- 區塊2：歷史大事記（第14版時間線設計） -->
-    <DecorSection main-title="歷史大事記" en-title="HISTORY">
+    <DecorSection main-title="源品香大事記" en-title="HISTORY">
       <div class="py-8">
         <div class="relative overflow-hidden">
           <div v-for="(item, i) in timelineData" :key="i"
@@ -47,7 +161,7 @@ import { founderData, timelineData } from '@/pageData/about'
               <div class="flex-grow sm:pl-6 mt-6 sm:mt-0">
                 <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-1">{{ item.title }}</h2>
                 <span class="text-xl font-bold text-gray-800 dark:text-gray-300">{{ item.year }}</span>
-                <p class="text-lg font-medium mt-3 text-gray-700 dark:text-gray-400">{{ item.desc }}</p>
+                <p class="text-lg font-medium mt-3 text-gray-700 dark:text-gray-400" v-html="item.description"></p>
               </div>
             </div>
           </div>

@@ -6,16 +6,18 @@
     "buttonLink": "/about",
     "align": "left",
     "bgImage": "https://picsum.photos/1920/1080?random=1",
-    "aos": "fade-right"
+    "aos": "fade-right",
+    "scrollDown": true
   },
   {
-    "title": "精選禪品",
+    "title": "精選產品",
     "description": "產品皆由天然食材製成，無無外添加任何化學成分。<br>讓您在享受美味的同時，也能感受健康生活的美好。",
     "buttonText": "挑選產品",
     "buttonLink": "/product",
     "align": "right",
     "bgImage": "https://picsum.photos/1920/1080?random=2",
-    "aos": "fade-left"
+    "aos": "fade-left",
+    "scrollDown": true
   },
   {
     "title": "媒體介紹",
@@ -24,7 +26,8 @@
     "buttonLink": "/media",
     "align": "left",
     "bgImage": "https://picsum.photos/1920/1080?random=3",
-    "aos": "fade-right"
+    "aos": "fade-right",
+    "scrollDown": true
   },
   {
     "title": "客戶見證",
