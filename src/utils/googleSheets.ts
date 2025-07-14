@@ -1,13 +1,48 @@
 // 通用 Google Sheets CSV 讀取工具
 
-// 取得 Google Sheets CSV 原始內容
-export const fetchGoogleSheetCsv = async (csvUrl: string): Promise<string> => {
+// 本地快取
+const cache = new Map<string, { data: string; timestamp: number; ttl: number }>()
+
+// 快取管理
+const getCachedData = (key: string): string | null => {
+  const cached = cache.get(key)
+  if (cached && Date.now() - cached.timestamp < cached.ttl) {
+    return cached.data
+  }
+  return null
+}
+
+const setCachedData = (key: string, data: string, ttl: number = 5 * 60 * 1000) => {
+  cache.set(key, { data, timestamp: Date.now(), ttl })
+}
+
+// 取得 Google Sheets CSV 原始內容（帶快取）
+export const fetchGoogleSheetCsv = async (
+  csvUrl: string,
+  useCache: boolean = true,
+): Promise<string> => {
+  // 檢查快取
+  if (useCache) {
+    const cached = getCachedData(csvUrl)
+    if (cached) {
+      return cached
+    }
+  }
+
   const response = await fetch(csvUrl, {
     method: 'GET',
     headers: { Accept: 'text/csv' },
   })
   if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
-  return await response.text()
+
+  const data = await response.text()
+
+  // 儲存到快取
+  if (useCache) {
+    setCachedData(csvUrl, data)
+  }
+
+  return data
 }
 
 // 通用 CSV 解析，回傳 Record<string, string>[]
@@ -49,13 +84,14 @@ export const mapCsvData = <T>(
   return data.map(mapper)
 }
 
-// 通用載入函式：處理CSV數據的載入、映射和後處理
+// 通用載入函式：處理CSV數據的載入、映射和後處理（帶快取）
 export const loadCsvData = async <T, R>(
   csvUrl: string,
   mapper: (item: Record<string, string>) => T,
   processor?: (mappedData: T[], rawData: Record<string, string>[]) => R,
+  useCache: boolean = true,
 ): Promise<R> => {
-  const csv = await fetchGoogleSheetCsv(csvUrl)
+  const csv = await fetchGoogleSheetCsv(csvUrl, useCache)
   const rawData = parseCsv(csv)
 
   // 先映射數據
@@ -68,4 +104,15 @@ export const loadCsvData = async <T, R>(
 
   // 否則直接返回映射後的數據
   return mappedData as unknown as R
+}
+
+// 背景更新快取
+export const refreshCacheInBackground = async (csvUrl: string) => {
+  try {
+    console.log('背景更新快取...')
+    await fetchGoogleSheetCsv(csvUrl, false) // 不使用快取，強制更新
+    console.log('快取更新完成')
+  } catch (error) {
+    console.error('背景更新快取失敗:', error)
+  }
 }

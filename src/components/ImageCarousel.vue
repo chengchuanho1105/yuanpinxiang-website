@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+import type { Swiper as SwiperType } from 'swiper'
 
 // 引入 Swiper 樣式
 import 'swiper/css'
@@ -15,7 +16,7 @@ interface CarouselItem {
   buttonLink?: string
   bgImage?: string
   videoUrl?: string
-  videoType?: 'mp4' | 'webm' | 'ogg'
+  videoType?: 'mp4' | 'webm' | unknown
 }
 
 const props = withDefaults(defineProps<{
@@ -75,11 +76,10 @@ const swiperOptions = computed(() => ({
           <video v-if="item.videoUrl" class="absolute inset-0 w-full h-full object-cover" :src="item.videoUrl"
             :type="item.videoType ? `video/${item.videoType}` : 'video/mp4'" autoplay muted loop playsinline
             preload="auto">
-            您的瀏覽器不支援影片播放。
           </video>
 
           <!-- 背景圖片 -->
-          <div v-else-if="item.bgImage" class="absolute inset-0 bg-cover bg-center"
+          <div v-else-if="item.bgImage" class="absolute inset-0 bg-cover bg-center object-cover"
             :style="`background-image: url('${item.bgImage}');`">
           </div>
 

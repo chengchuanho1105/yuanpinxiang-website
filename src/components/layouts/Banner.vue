@@ -38,11 +38,11 @@ const scrollPastBanner = () => {
 </script>
 
 <template>
-  <section :class="[
+  <section id="banner" :class="[
     'relative w-full overflow-hidden',
     containerClass
   ]">
-    <!-- 預設背景，可被內容覆蓋 -->
+    <!-- 預設背景 -->
     <div class="absolute inset-0 bg-gradient-to-br from-sky-100 to-sky-200 dark:from-sky-900 dark:to-sky-800"></div>
 
     <!-- 內容插槽 -->

@@ -95,7 +95,6 @@ const currentStyle = computed(() => props.style || 'default')
 </script>
 
 <template>
-  <!-- 首頁不顯示麵包屑 -->
   <nav v-if="!isHomePage && breadcrumbItems.length > 0" class="breadcrumb-container">
 
     <!-- 風格1: 預設風格 -->

@@ -42,7 +42,7 @@ export const brandSEOConfig: BrandSEOConfig = {
 
   robots: 'index, follow', // 機器人
 
-  googleSiteVerification: 'google-site-verification=1234567890', // Google站台驗證
+  googleSiteVerification: 'pEOfGMhOo2uh7ZdPPuOk04bziLp3-NwjZ1JmnNfm-wk', // Google站台驗證
   googleAnalytics: 'G-1234567890', // Google Analytics
   googleSearchConsole: 'G-1234567890', // Google Search Console
   googleTagManager: 'G-1234567890', // Google Tag Manager
