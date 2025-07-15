@@ -1,0 +1,79 @@
+[
+  {
+    "id": "1",
+    "slot": "news",
+    "category": "產品資訊",
+    "date": "2099/01/01",
+    "author": "",
+    "image": "https://picsum.photos/400/250?random=1",
+    "tags": ["新品", "有機", "黃豆"],
+    "title": "新產品上市：有機XX系列",
+    "content": "我們特別推出有機XX系列。這系列產品採用100%有機認證的台灣黃豆製作，從種植到加工全程有機管理，讓您享受最純淨的美味。"
+  },
+  {
+    "id": "2",
+    "slot": "featured",
+    "category": "活動消息",
+    "date": "2099/01/02",
+    "author": "",
+    "image": "https://picsum.photos/400/250?random=2",
+    "tags": ["產地直送", "新鮮", "非基改"],
+    "title": "產地直送：新鮮非基改黃豆到貨！",
+    "content": "最新一批非基改黃豆新鮮到貨，從產地直送冷藏配送，保留原始風味與營養，數量有限，歡迎預購！"
+  },
+  {
+    "id": "3",
+    "slot": "news",
+    "category": "獲獎消息",
+    "date": "2099/01/03",
+    "author": "",
+    "image": "https://picsum.photos/400/250?random=3",
+    "tags": ["榮譽", "品質認可"],
+    "title": "榮獲食品界最高榮譽XX獎",
+    "content": "我們的有機黃豆產品榮獲「XX獎」年度品質卓越獎項，感謝大家的支持，這是對我們持續堅持品質與天然的最大肯定。"
+  },
+  {
+    "id": "4",
+    "slot": "featured",
+    "category": "品牌故事",
+    "date": "2099/01/04",
+    "author": "",
+    "image": "https://picsum.photos/400/250?random=4",
+    "tags": ["品牌精神", "在地農業", "永續"],
+    "title": "從一顆黃豆開始的品牌旅程",
+    "content": "品牌創立初衷源自於一顆對土地的熱愛。我們走訪台灣各地，只為尋找最適合種植黃豆的環境，結合農民智慧，打造一條純淨、永續的有機之路。"
+  },
+  {
+    "id": "5",
+    "slot": "news",
+    "category": "健康資訊",
+    "date": "2099/01/05",
+    "author": "營養師:王曉明",
+    "image": "https://picsum.photos/400/250?random=5",
+    "tags": ["營養", "健康", "蛋白質"],
+    "title": "豆皮營養價值解析：為什麼豆皮是健康選擇？",
+    "content": "豆皮不價值解析：為什麼豆皮是健康選擇？"
+  },
+  {
+    "id": "6",
+    "slot": "featured",
+    "category": "品質認證",
+    "date": "2099/01/06",
+    "author": "",
+    "image": "https://picsum.photos/400/250?random=6",
+    "tags": ["有機認證", "品質保障"],
+    "title": "全產品通過XXX認證",
+    "content": "我們所有產品皆通過國際有機認證與HACCP食品安全驗證，從源頭到餐桌，為消費者層層把關，保障每一口的安心。"
+  },
+  {
+    "id": "7",
+    "slot": "none",
+    "category": "文化傳承",
+    "date": "2099/01/07",
+    "author": "",
+    "image": "https://picsum.photos/400/250?random=7",
+    "tags": ["手工技藝", "豆製品文化", "台灣傳統"],
+    "title": "傳承百年豆製品工藝，守護台灣味",
+    "content": "從手工製豆皮到天然日曬豆干，我們堅持古法製程，傳承職人精神。這不僅是一道道美味，更是一段段屬於台灣的文化記憶。"
+  }
+]

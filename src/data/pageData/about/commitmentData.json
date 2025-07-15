@@ -1,0 +1,22 @@
+[
+  {
+    "image": "https://picsum.photos/400/400?random=10",
+    "title": "嚴選黃豆",
+    "description": "使用單一品種非基因改造黃豆，味道更純正，成本也比混合豆高出5～6%。"
+  },
+  {
+    "image": "https://picsum.photos/400/400?random=11",
+    "title": "傳統三溫暖工法",
+    "description": "全程遵循「浸泡 → 煮滾 → 過濾」的黃豆三溫暖製程。"
+  },
+  {
+    "image": "https://picsum.photos/400/400?random=12",
+    "title": "手工製作",
+    "description": "每張豆皮皆由人工細心撈取，無任何化學添加。"
+  },
+  {
+    "image": "https://picsum.photos/400/400?random=13",
+    "title": "匠心堅持",
+    "description": "每片豆皮都是源自耐心與堅持的結晶。"
+  }
+]
