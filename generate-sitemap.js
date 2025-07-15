@@ -2,7 +2,8 @@
 import Sitemap from 'vue-router-sitemap'
 import path from 'path'
 import fs from 'fs'
-import newsData from './src/data/pageData/news/newsData.json' assert { type: 'json' }
+
+const newsData = JSON.parse(fs.readFileSync('./src/data/pageData/news/newsData.json', 'utf-8'))
 
 // 動態路由展開
 const dynamicNewsRoutes = Array.isArray(newsData) ? newsData.map((news) => `/news/${news.id}`) : []
