@@ -175,6 +175,28 @@ export const pageConfig: PageConfig = {
           navbarOrder: 5,
         },
       },
+      children: [
+        {
+          path: ':id',
+          name: `${brandName}-News-Detail`,
+          component: () => import('@/pages/yuanpinxiang/news/[id].vue'),
+          meta: {
+            title: `最新消息詳情 | ${brandDisplayName}`,
+            description: '',
+            layout: 'default',
+            requiresAuth: false,
+            roles: ['admin', 'user', 'guest'],
+            seo: {
+              sitemap: false,
+              sitemapXml: false,
+              robots: true,
+            },
+            ui: {
+              navbar: false,
+            },
+          },
+        },
+      ],
     },
     {
       path: '/faq',

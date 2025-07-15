@@ -3,6 +3,7 @@ defineOptions({ name: 'ChuanLife-News' })
 
 // ---------- Vue 核心工具函式 ----------
 import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import type { Ref } from 'vue'
 
 // ---------- 組件引入區（版面用） ----------
@@ -52,7 +53,7 @@ const {
   data: newsData,
   load: loadNewsData
 } = useHybridData<NewsData>(
-  localNewsData as NewsData[],
+  localNewsData as unknown as NewsData[],
   NEWS_CSV_URL,
   mapNewsData
 )
@@ -78,9 +79,10 @@ const featuredPage = ref(1)
 const featuredTotalPages = computed(() => Math.ceil(featuredNewsList.value.length / PAGE_SIZE))
 const featuredPaged = computed(() => featuredNewsList.value.slice((featuredPage.value - 1) * PAGE_SIZE, featuredPage.value * PAGE_SIZE))
 
-// 新分頁開啟新聞詳情
+// 同頁面跳轉新聞詳情
+const router = useRouter()
 function openNewsDetail(news: NewsData) {
-  window.open(`/news/${news.id}`, '_blank')
+  router.push(`/news/${news.id}`)
 }
 
 // 日期格式化
