@@ -11,7 +11,6 @@ import type { Swiper as SwiperClass } from 'swiper/types'
 
 const route = useRoute()
 const product = allProducts.find((product) => String(product.id) === String(route.params.id))
-console.log(product)
 
 const thumbsSwiper: SwiperClass | null = null
 const showFullscreen = ref(false)
