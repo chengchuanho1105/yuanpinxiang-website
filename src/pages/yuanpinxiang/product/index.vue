@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'ChuanLife-Product' })
+defineOptions({ name: 'YuanPinXiang-Product' })
 </script>
 
 <template>

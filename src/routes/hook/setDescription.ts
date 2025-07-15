@@ -10,19 +10,32 @@ function stripBrandPrefix(path: string, brand: string) {
   return path
 }
 
-// 遞迴尋找 meta.description
+// 將 /foo/:id/bar 轉成 /^\/foo\/[^/]+\/bar$/
+function pathToRegex(path: string) {
+  return new RegExp('^' + path.replace(/:[^/]+/g, '[^/]+') + '$')
+}
+
+// 遞迴尋找 meta.description，組合父路徑以支援子路由
 function findRouteDescription(
   routes: PageRoute[],
   path: string,
   brand: string,
+  parentPath = '',
 ): string | undefined {
   const normalizedPath = stripBrandPrefix(path, brand)
   for (const route of routes) {
-    if (route.path === normalizedPath) {
+    // 組合完整路徑
+    let fullPath = parentPath
+    if (!fullPath.endsWith('/')) fullPath += '/'
+    fullPath += route.path.startsWith('/') ? route.path.slice(1) : route.path
+    if (!fullPath.startsWith('/')) fullPath = '/' + fullPath
+    fullPath = fullPath.replace(/\\/g, '/').replace(/\/+/g, '/')
+    // 比對（支援動態參數）
+    if (pathToRegex(fullPath).test(normalizedPath)) {
       return route.meta.description
     }
     if (route.children) {
-      const childDescription = findRouteDescription(route.children, path, brand)
+      const childDescription = findRouteDescription(route.children, path, brand, fullPath)
       if (childDescription) return childDescription
     }
   }
@@ -41,6 +54,7 @@ export function setupPageDescription(router: Router) {
       pageConfig && Array.isArray(pageConfig.routes) ? pageConfig.routes : [],
       typeof to.path === 'string' ? to.path : '',
       typeof brand === 'string' ? brand : '',
+      '',
     )
     // 4. fallback 品牌 displayName
     const brandDescription =

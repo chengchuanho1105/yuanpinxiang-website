@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'ChuanLife-Product-List' })
+defineOptions({ name: 'YuanPinXiang-Product-List' })
 import { ref, computed } from 'vue'
 import DecorSection from '@/components/DecorSection.vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'

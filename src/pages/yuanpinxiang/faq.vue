@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'ChuanLife-Faq' })
+defineOptions({ name: 'YuanPinXiang-Faq' })
 
 import { ref, onMounted } from 'vue'
 

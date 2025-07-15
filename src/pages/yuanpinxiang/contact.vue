@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'ChuanLife-Contact2' })
+defineOptions({ name: 'YuanPinXiang-Contact' })
 import DecorSection from '@/components/DecorSection.vue'
 </script>
 
