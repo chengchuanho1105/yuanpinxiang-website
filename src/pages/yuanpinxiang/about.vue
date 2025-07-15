@@ -14,7 +14,7 @@ import { useHybridData } from '@/composables/useHybridData'
 import localFounderData from '@/data/pageData/about/founderData.json' // 本地創辦人資料
 import localTimelineData from '@/data/pageData/about/timelineData.json' // 本地時間軸資料
 import localCommitmentData from '@/data/pageData/about/commitmentData.json' // 本地職人堅持資料
-import localCSRData from '@/data/pageData/about/csrData.json' // 本地社會責任資料
+import localCSRData from '@/data/pageData/about/csrData.json' // 本地社會責任資料?
 
 /** ========== About Founder Data 資料處裡 ========== */
 
