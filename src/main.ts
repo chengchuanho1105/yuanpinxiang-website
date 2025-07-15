@@ -7,11 +7,10 @@ AOS.init({ duration: 500, once: false, offset: 50 })
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { createHead } from '@unhead/vue/client'
+import { setupPageTitleDescription } from '@/routes/hook/setTitlrDescription'
 
 import App from './App.vue'
 import router from './router'
-import { setupPageTitle } from './routes/hook/setTitle'
-import { setupPageDescription } from './routes/hook/setDescription'
 
 const app = createApp(App)
 const head = createHead()
@@ -19,8 +18,6 @@ const head = createHead()
 app.use(createPinia())
 app.use(router)
 
-setupPageTitle(router)
-setupPageDescription(router)
-
+setupPageTitleDescription(router)
 app.use(head)
 app.mount('#app')

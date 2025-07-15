@@ -101,8 +101,7 @@ export const pageConfig: PageConfig = {
           component: () => import('@/pages/yuanpinxiang/product/list/[id].vue'),
           meta: {
             title: `產品詳情 | ${brandDisplayName}`,
-            description:
-              '源品香產品列表，精選多款有機黃豆製品，嚴選台灣在地原料，通過多項食品安全認證。每項產品皆堅持純淨無添加，結合傳統工藝與現代品質，讓您輕鬆選購健康、安心、美味的優質食品。',
+            description: '',
             layout: 'default',
             requiresAuth: false,
             roles: ['admin', 'user', 'guest'],

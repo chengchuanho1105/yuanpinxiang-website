@@ -4,11 +4,8 @@ import { computed, onMounted } from 'vue'
 import { useHybridData } from '@/composables/useHybridData'
 import rawLocalNewsData from '@/data/pageData/news/newsData.json'
 
-// 轉換 localNewsData tags 為 string
-const localNewsData = (rawLocalNewsData as Record<string, unknown>[]).map(item => ({
-  ...item,
-  tags: Array.isArray(item.tags) ? JSON.stringify(item.tags) : (item.tags || '')
-}))
+// 直接使用原始資料，先轉 unknown 再轉 Record<string, string>[]
+const localNewsData = rawLocalNewsData as unknown as Record<string, string>[]
 
 // 取得路由參數
 const route = useRoute()
@@ -28,14 +25,14 @@ const {
   tags: string
   title: string
   content: string
-}>(localNewsData, 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSpK4IAJ0lQCD_pEHh4smflPpCiMbgsMqUfp24uQc-0Ru87ZN2izl7W-O9GbL97Ej6mPGb1eHfd37hx/pub?output=csv', (item: Record<string, string>) => ({
+}>(localNewsData as unknown as { id: string; slot: string; category: string; date: string; author: string; image: string; tags: string; title: string; content: string; }[], 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSpK4IAJ0lQCD_pEHh4smflPpCiMbgsMqUfp24uQc-0Ru87ZN2izl7W-O9GbL97Ej6mPGb1eHfd37hx/pub?output=csv', (item: Record<string, string>) => ({
   id: item.id || '',
-  slot: item.slot || '', // 修正：slot 拼寫
+  slot: item.slot || '',
   category: item.category || '',
   date: item.date || '',
   author: item.author || '',
   image: item.image || '',
-  tags: item.tags || '',
+  tags: Array.isArray(item.tags) ? JSON.stringify(item.tags) : (item.tags || ''),
   title: item.title || '',
   content: item.content || ''
 }))
@@ -48,6 +45,7 @@ onMounted(() => {
 const news = computed(() => newsData.value.find(n => n.id === newsId.value))
 
 function parseTags(tags: string): string[] {
+  if (typeof tags !== 'string') return []
   try {
     return JSON.parse(tags)
   } catch {

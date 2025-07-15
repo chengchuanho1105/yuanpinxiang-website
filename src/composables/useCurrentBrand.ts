@@ -1,8 +1,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { BRAND_INFOS, MAIN_BRAND } from '@/brands'
-import { BRAND_CONFIGS } from '@/routes'
-import { PAGE_CONFIGS } from '@/routes/pageConfig'
+import { PAGE_CONFIGS } from '@/routes'
 import { BRAND_SEO_CONFIGS } from '@/brands'
 
 /**
@@ -12,13 +11,13 @@ export function useCurrentBrand() {
   const route = useRoute()
 
   // 當前品牌 key
-  const brandKey = computed(() => route.meta?.brand || route.params?.brand || 'yuanpinxiang')
+  const brandKey = computed(() => route.meta?.brand || route.params?.brand || MAIN_BRAND)
 
   // 當前品牌資訊
   const brandInfo = computed(() => BRAND_INFOS[`${brandKey.value}Info` as keyof typeof BRAND_INFOS])
 
   // 當前品牌配置
-  const brandConfig = computed(() => BRAND_CONFIGS[brandKey.value as keyof typeof BRAND_CONFIGS])
+  const brandConfig = computed(() => PAGE_CONFIGS[brandKey.value as keyof typeof PAGE_CONFIGS])
 
   // 當前品牌頁面配置
   const pageConfig = computed(() => PAGE_CONFIGS[brandKey.value as keyof typeof PAGE_CONFIGS])

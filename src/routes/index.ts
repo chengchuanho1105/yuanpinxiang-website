@@ -1,7 +1,7 @@
 import { pageConfig as yuanpinxiang } from './pageConfig/yuanpinxiang'
 import { pageConfig as crazyclown } from './pageConfig/crazyclown'
 
-export const BRAND_CONFIGS = {
+export const PAGE_CONFIGS = {
   yuanpinxiang,
   crazyclown,
 }

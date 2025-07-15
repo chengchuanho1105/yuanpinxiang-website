@@ -4,18 +4,40 @@ import { brandInfoConfig } from './yuanpinxiang.info'
 import ogImage from '@/assets/media/og-img/yuanpinxiang/og-img.png'
 
 export const brandSEOConfig: BrandSEOConfig = {
-  defaultTitle: brandInfoConfig.shortName, // 預設標題
-  defaultDescription: brandInfoConfig.slogan || '', // 預設描述
+  defaultTitle: brandInfoConfig.shortName,
+  defaultDescription: brandInfoConfig.slogan || brandInfoConfig.fullName,
   keywords: [
     '源品香',
-    '源品香企業行',
     '源品香豆皮',
     '源品香豆包',
-    '源品香豆漿',
-    '源品香豆花',
-    '源品香豆漿',
-    '源品香豆漿',
-  ], // 關鍵字
+    '台灣豆皮',
+    '台灣豆包',
+    '手工豆皮',
+    '手工豆包',
+    '非基改黃豆',
+    '傳統豆製品',
+    '素食豆皮',
+    '素食豆包',
+    '高雄豆皮',
+    '高雄豆包',
+    '豆製品批發',
+    '豆皮批發',
+    '豆包批發',
+    '豆漿批發',
+    '豆花批發',
+    '豆製品工廠',
+    '豆皮工廠',
+    '豆包工廠',
+    '健康食品',
+    '植物蛋白',
+    '早餐推薦',
+    '素食推薦',
+    '高蛋白食品',
+    '在地品牌',
+    '台灣品牌',
+    '雲林美食',
+    '豆製品專家',
+  ],
 
   canonicalUrl: brandInfoConfig.websiteUrl, // 規範網址
   alternateLocales: ['zh-TW', 'en-US'], // 替代語言

@@ -15,7 +15,7 @@ export const brandInfoConfig: BrandInfoConfig = {
   primaryColor: '#000000', // 品牌主色
   secondaryColor: '#000000', // 品牌輔色
   accentColor: '#000000', // 品牌強調色
-  slogan: '品味生活，銓新選擇', // 品牌口號
+  slogan: '源自初心滋養廣，品餘至誠鑄芬芳，香隨歲月傳千里，讚立人間業世昌。', // 品牌口號
   websiteUrl: 'https://yuanpinxiang.com', // 品牌網站
   copyright: '© 2025 Chuan Life. All rights reserved.', // 版權
   contactEmail: 'a0965814092@gmail.com', // 聯絡信箱
