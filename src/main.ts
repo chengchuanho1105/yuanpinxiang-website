@@ -8,6 +8,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { createHead } from '@unhead/vue/client'
 import { setupPageTitleDescription } from '@/routes/hook/setTitlrDescription'
+import { setupPageSeo } from '@/routes/hook/setSeo'
 
 import App from './App.vue'
 import router from './router'
@@ -19,5 +20,7 @@ app.use(createPinia())
 app.use(router)
 
 setupPageTitleDescription(router)
+setupPageSeo(router)
+
 app.use(head)
 app.mount('#app')
