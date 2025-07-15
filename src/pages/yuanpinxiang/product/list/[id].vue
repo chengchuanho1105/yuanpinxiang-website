@@ -47,8 +47,8 @@ function closeFullscreen() {
       <button class="absolute top-6 right-8 text-white text-3xl z-[10001]" @click="closeFullscreen">&times;</button>
       <Swiper :modules="[Navigation, Thumbs]" :initial-slide="tabImg" navigation pagination keyboard
         class="w-screen h-screen flex items-center justify-center" style="max-width:100vw;max-height:100vh;"
-        @slideChange="(swiper) => { tabImg.value = swiper.activeIndex; fullscreenImg.value = images.value[tabImg.value] }">
-        <SwiperSlide v-for="(img, i) in images.value" :key="i">
+        @slideChange="(swiper) => { tabImg = swiper.activeIndex; fullscreenImg = images[tabImg] }">
+        <SwiperSlide v-for="(img, i) in images" :key="i">
           <div class="w-full h-full flex items-center justify-center">
             <img :src="img" class="max-h-[90vh] max-w-[90vw] rounded-xl shadow-lg object-contain" />
           </div>
