@@ -28,7 +28,7 @@ interface HomeHeroData {
 }
 
 /** 2. 取得 Home Hero Data CSV 來源 */
-const HOMEHERODATA_CSV_URL = ''
+const HOMEHERODATA_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTRzBzSCLW9Ch8Hdo6fPDZKfdT1qhlFr9h3o-r3y4ZQsx7BvnkFw4hwCilPvU5bwWaP2N3llAX0S_Ud/pub?output=csv'
 
 /** 3. 定義 CSV 欄位轉換函式 */
 const mapHomeHeroData = (item: Record<string, string>): HomeHeroData => {

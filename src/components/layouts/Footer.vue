@@ -99,6 +99,12 @@ const logoUrl = computed(() => {
                 <i class="bi bi-twitter-x"></i>
               </a>
             </div>
+            <div v-if="brandSocial.discord && brandSocial.discord.url">
+              <a :href="brandSocial.discord.url" target="_blank" rel="noopener"
+                class="footer-social-icon bg-gradient-to-br from-indigo-500 to-indigo-700 hover:from-indigo-700 hover:to-indigo-500">
+                <i class="bi bi-discord"></i>
+              </a>
+            </div>
           </template>
           <span v-if="!brandSocial" class="text-gray-400">暫無社群資訊</span>
         </div>

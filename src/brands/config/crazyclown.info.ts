@@ -18,12 +18,12 @@ export const brandInfoConfig: BrandInfoConfig = {
   slogan: '不瘋，不成團', // 品牌口號
   websiteUrl: 'https://chuan.life/crazyclown', // 品牌網站
   copyright: '© 2025 Crazy Clown. All rights reserved.', // 版權
-  contactEmail: 'crazyclown@gmail.com', // 聯絡信箱
-  contactPhone: '0908911153', // 聯絡電話
+  contactEmail: 'pubg.crazyclown.2023@gmail.com', // 聯絡信箱
   paymentMethods: ['bank-transfer', 'cash'], // 付款方式
   language: 'zh-TW', // 語言
   currency: 'TWD', // 貨幣
   social: {
     discord: { id: '3TEHPZhYUK', name: 'Crazy_Clown', url: 'https://discord.gg/3TEHPZhYUK' },
+    line: { id: 'MvNfwjVwKA', name: '銓生活', url: 'https://line.me/R/ti/g/MvNfwjVwKA' },
   },
 }
