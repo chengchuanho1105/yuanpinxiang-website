@@ -1,7 +1,7 @@
 [
   {
     "title": "關於我們",
-    "description": "Crazy_Clown 是。",
+    "description": "Crazy_Clown 是一個致力於歡樂與團隊精神的 PUBG 戰隊。<br>我們相信，遊戲不只是競技，更是連結彼此的橋樑。<br>在這裡，你可以找到戰友、交到朋友，並一起寫下瘋狂又精彩的吃雞回憶。",
     "buttonText": "了解更多",
     "buttonLink": "/about",
     "align": "left",
@@ -11,7 +11,7 @@
   },
   {
     "title": "戰隊獨享優惠",
-    "description": "戰隊獨享優惠，。",
+    "description": "Crazy_Clown 為戰隊成員準備了「特惠商品」、「專屬獎勵」...等，讓你的吃雞體驗再升級！<br>Crazy_Clown，不只是一個戰隊，更是一個提供強力後援的大家庭。",
     "buttonText": "G-Coin購買",
     "buttonLink": "/gcoin",
     "align": "right",
@@ -21,7 +21,7 @@
   },
   {
     "title": "最新活動",
-    "description": "最新活動，。",
+    "description": "Crazy_Clown 不定時更新挑戰活動、社群互動活動...等多元內容。<br>無論是競技型選手還是休閒玩家，都能在 Crazy_Clown 找到屬於你的舞台！",
     "buttonText": "更多活動",
     "buttonLink": "/event",
     "align": "left",
@@ -31,7 +31,7 @@
   },
   {
     "title": "加入我們",
-    "description": "加入我們，。",
+    "description": "Crazy_Clown 歡迎每一位熱愛 PUBG 的你！<br>無論你是新手還是老鳥，只要你喜歡團隊合作、願意一起瘋、一起笑，就來吧。<br>我們不只是戰隊，是一群朋友。",
     "buttonText": "入隊申請",
     "buttonLink": "/join",
     "align": "right",

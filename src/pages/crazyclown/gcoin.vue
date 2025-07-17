@@ -135,7 +135,7 @@ onBeforeUnmount(() => {
             <thead>
               <tr class="text-base text-end text-zinc-600 dark:text-zinc-300 ">
                 <th class="py-2 px-2">G-Coin</th>
-                <th class="py-2 px-2">現售價</th>
+                <th class="py-2 px-2">優惠價</th>
               </tr>
             </thead>
             <tbody>
@@ -177,8 +177,8 @@ onBeforeUnmount(() => {
         </div>
         <hr class="my-4 border-zinc-200 dark:border-zinc-700">
         <div class="mt-2 text-blue-700 dark:text-blue-300 text-base font-medium flex items-center gap-2">
-          <i class="bi bi-discord"></i>
-          請透過 <span class="font-bold">Discord</span> 聯絡購買。
+          請透過 <a href="https://discord.gg/3TEHPZhYUK" target="_blank" rel="noopener noreferrer" class="font-bold">
+            <i class="bi bi-discord mr-2"></i>Discord<i class="bi bi-box-arrow-up-right ml-1"></i></a> 聯絡購買。
         </div>
       </div>
       <div class="bg-yellow-50 dark:bg-yellow-900 rounded-xl border-l-4 border-yellow-400 p-5 mb-6">
@@ -188,7 +188,7 @@ onBeforeUnmount(() => {
         <ul class="list-disc pl-6 text-yellow-800 dark:text-yellow-100 space-y-1">
           <li>本服務僅限 CrazyClown 戰隊成員及熟識玩家。</li>
           <li>購買前請先於 Discord 聯絡確認庫存與即時價格。</li>
-          <li>付款方式以台灣新台幣（TWD）為主，支援多種轉帳方式。</li>
+          <li>付款方式以新台幣（TWD）為主，支援多種轉帳方式。</li>
           <li>購買前請提供正確的 PUBG ID 以利紀錄。</li>
           <li>G-Coin 會以 <span class='font-bold text-indigo-700 dark:text-indigo-200'>CDK（序號）</span> 方式發放，請於遊戲內自行兌換。</li>
           <li>交易完成後，CDK 會於 24 小時內發送至指定聯絡方式。</li>
@@ -202,9 +202,10 @@ onBeforeUnmount(() => {
         <ul class="list-decimal pl-6 text-blue-800 dark:text-blue-100 space-y-1">
           <li>請勿提供錯誤的聯絡資訊或遊戲帳號，否則損失需自行承擔。</li>
           <li>付款後請主動提供轉帳證明截圖。</li>
-          <li>CDK 一經發送即視為交易完成，請妥善保管並盡快兌換。</li>
+          <li>CDK 一經發送即視為交易完成，概不退/換貨。</li>
+          <li>CDK 請妥善保管並盡快兌換。</li>
           <li>嚴禁洗錢、詐騙等非法用途，違者將永久拒絕服務。</li>
-          <li>如有任何疑慮，請隨時於 Discord 詢問管理員。</li>
+          <li>如有任何疑慮，請隨時向客服洽詢。</li>
           <li>本服務保留隨時調整價格與規則之權利。</li>
         </ul>
       </div>
@@ -217,20 +218,30 @@ onBeforeUnmount(() => {
     <div class="gcoin-tooltip-arrow" :style="{ left: tooltip.arrowLeft + 'px' }"></div>
     <div class="gcoin-tooltip-content">
       <div class="font-semibold mb-1">
-        {{ tooltip.item?.amount }} G-Coin 原價
-      </div>
-      <div class="flex font-mono text-base">
-        USD <span class="ml-auto">{{ tooltip.item?.usd }}</span>
-      </div>
-      <div class="flex font-mono text-base">
-        TWD <span class="ml-auto">{{ (parseFloat(tooltip.item?.usd || '0') *
-          USD2TWD).toLocaleString(undefined,
-            { maximumFractionDigits: 0 }) }}</span>
+        <template
+          v-if="tooltip.item?.amount === gcoinListData[0]?.amount && tooltip.item?.usd === (parseFloat(gcoinListData[0]?.usd || '0') * 5).toFixed(2)">
+          {{ tooltip.item?.amount }}G-Coin*5單
+        </template>
+        <template v-else>
+          {{ tooltip.item?.amount }}G-Coin
+        </template>
       </div>
       <hr class="my-2 border-zinc-200 dark:border-zinc-700">
-      <div class="flex font-semibold text-green-600 mt-1">
-        TWD 現省<span class="ml-auto">{{ (parseFloat(tooltip.item?.usd || '0') * USD2TWD -
+      <div class="flex font-semibold text-base">
+        　原價 USD <span class="ml-auto">{{ tooltip.item?.usd }}</span>
+      </div>
+      <div class="flex font-semibold text-base">
+        ＝原價 TWD <span class="ml-auto">{{ (parseFloat(tooltip.item?.usd || '0') * USD2TWD).toLocaleString(undefined, {
+          maximumFractionDigits: 0
+        }) }}</span>
+      </div>
+      <hr class="my-2 border-zinc-200 dark:border-zinc-700">
+      <div class="flex font-semibold text-base text-green-600 dark:text-green-400 mt-1">
+        －優惠額 TWD<span class="ml-auto">{{ (parseFloat(tooltip.item?.usd || '0') * USD2TWD -
           Number(tooltip.item?.price)).toLocaleString(undefined, { maximumFractionDigits: 0 }) }}</span>
+      </div>
+      <div class="flex font-semibold text-base text-indigo-700 dark:text-indigo-300 mt-1">
+        ＝優惠價 TWD <span class="ml-auto">{{ Number(tooltip.item?.price).toLocaleString() }}</span>
       </div>
     </div>
   </div>
