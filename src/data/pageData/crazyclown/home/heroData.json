@@ -1,0 +1,42 @@
+[
+  {
+    "title": "關於我們",
+    "description": "Crazy_Clown 是。",
+    "buttonText": "了解更多",
+    "buttonLink": "/about",
+    "align": "left",
+    "bgImage": "https://picsum.photos/1920/1080?random=1",
+    "aos": "fade-right",
+    "scrollDown": true
+  },
+  {
+    "title": "戰隊獨享優惠",
+    "description": "戰隊獨享優惠，。",
+    "buttonText": "G-Coin購買",
+    "buttonLink": "/gcoin",
+    "align": "right",
+    "bgImage": "https://picsum.photos/1920/1080?random=2",
+    "aos": "fade-left",
+    "scrollDown": true
+  },
+  {
+    "title": "最新活動",
+    "description": "最新活動，。",
+    "buttonText": "更多活動",
+    "buttonLink": "/event",
+    "align": "left",
+    "bgImage": "https://picsum.photos/1920/1080?random=3",
+    "aos": "fade-right",
+    "scrollDown": true
+  },
+  {
+    "title": "加入我們",
+    "description": "加入我們，。",
+    "buttonText": "入隊申請",
+    "buttonLink": "/join",
+    "align": "right",
+    "bgImage": "https://picsum.photos/1920/1080?random=4",
+    "aos": "fade-left",
+    "scrollDown": false
+  }
+]

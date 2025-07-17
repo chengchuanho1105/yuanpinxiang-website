@@ -1,27 +1,88 @@
 <script setup lang="ts">
 defineOptions({ name: 'CrazyClown-Home' })
-import SitemapUrlTest from '@/components/SitemapUrlTest.vue'
+
+// ---------- Vue 核心工具函式 ----------
+import { onMounted } from 'vue'
+
+// ---------- 組件引入區（版面用） ----------
+import FeatureImageSection from '@/components/FeatureImageSection.vue'
+
+// ---------- 工具函式 ----------
+import { useHybridData } from '@/composables/useHybridData'
+
+// ---------- 資料來源 ----------
+import localHomeHeroData from '@/data/pageData/crazyclown/home/heroData.json' // 本地輪播圖資料
+
+/** ========== Home Hero Data 資料處裡 ========== */
+
+/** 1. Home Hero Data 的資料格式 */
+interface HomeHeroData {
+  title: string
+  description: string
+  buttonText: string
+  buttonLink: string
+  align: 'left' | 'right' | undefined
+  bgImage: string
+  aos: string
+  scrollDown?: boolean
+}
+
+/** 2. 取得 Home Hero Data CSV 來源 */
+const HOMEHERODATA_CSV_URL = ''
+
+/** 3. 定義 CSV 欄位轉換函式 */
+const mapHomeHeroData = (item: Record<string, string>): HomeHeroData => {
+  return {
+    title: item.title || '',
+    description: item.description || '',
+    buttonText: item.buttonText || '',
+    buttonLink: item.buttonLink || '',
+    align: (item.align === 'left' || item.align === 'right') ? item.align : 'left',
+    bgImage: item.bgImage || '',
+    aos: item.aos || '',
+    scrollDown:
+      typeof item.scrollDown === 'string'
+        ? (item.scrollDown.trim().toLowerCase() === 'true'
+          ? true
+          : item.scrollDown.trim().toLowerCase() === 'false'
+            ? false
+            : undefined)
+        : typeof item.scrollDown === 'boolean'
+          ? item.scrollDown
+          : undefined,
+  }
+}
+
+const {
+  data: homeHeroData,
+  loading: homeHeroLoading,
+  load: loadHomeHeroData
+} = useHybridData<HomeHeroData>(
+  localHomeHeroData as HomeHeroData[],
+  HOMEHERODATA_CSV_URL,
+  mapHomeHeroData
+)
+
+onMounted(() => {
+  loadHomeHeroData()
+})
 </script>
 
 <template>
-  <div>
-    <!-- Banner內容示例 -->
-    <div class="flex h-full items-center justify-center">
-      <div class="text-center">
-        <h1 class="mb-4 text-6xl font-bold text-zinc-900 dark:text-zinc-100">
-          歡迎來到 CrazyClown
-        </h1>
-        <p class="text-xl text-zinc-700 dark:text-zinc-300">
-          體驗瘋狂的娛樂世界
-        </p>
+  <div class="min-h-screen">
+    <div class="min-h-screen">
+      <div v-if="homeHeroLoading" class="flex justify-center items-center py-20">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        <span class="ml-3 text-gray-600 dark:text-gray-300">載入中...</span>
       </div>
-    </div>
-
-    <!-- 頁面其他內容 -->
-    <div class="container mx-auto px-4 py-8">
-      <h2 class="my-4 text-4xl font-bold text-zinc-900 dark:text-zinc-100">CrazyClown-Home</h2>
-      <hr class="my-4" />
-      <SitemapUrlTest />
+      <div v-else-if="homeHeroData.length === 0" class="bg-red-50 ...">
+        <p class="text-sm text-red-700 dark:text-red-300">無法載入首頁資料</p>
+      </div>
+      <template v-else>
+        <FeatureImageSection v-for="item in homeHeroData" :key="item.title" :title="item.title"
+          :description="item.description" :button-text="item.buttonText" :button-link="item.buttonLink"
+          :align="item.align" :bg-image="item.bgImage" :aos="item.aos" :scroll-down="item.scrollDown" />
+      </template>
     </div>
   </div>
 </template>

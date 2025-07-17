@@ -22,7 +22,7 @@ const isHomePage = computed(() => {
 const containerClass = computed(() => {
   return isHomePage.value
     ? 'h-screen' // 首頁占滿畫面
-    : 'h-[25svh]' // 其他頁面占25%
+    : 'h-[30svh]' // 其他頁面占25%
 })
 
 const scrollPastBanner = () => {

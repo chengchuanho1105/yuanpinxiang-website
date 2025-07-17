@@ -11,7 +11,7 @@ import FeatureImageSection from '@/components/FeatureImageSection.vue'
 import { useHybridData } from '@/composables/useHybridData'
 
 // ---------- 資料來源 ----------
-import localHomeHeroData from '@/data/pageData/home/heroData.json' // 本地輪播圖資料
+import localHomeHeroData from '@/data/pageData/yuanpinxiang/home/heroData.json' // 本地輪播圖資料
 
 /** ========== Home Hero Data 資料處裡 ========== */
 

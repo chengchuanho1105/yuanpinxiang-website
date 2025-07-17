@@ -52,6 +52,27 @@ export const pageConfig: PageConfig = {
       },
     },
     {
+      path: '/gcoin',
+      name: `${brandName}-Gcoin`,
+      component: () => import('@/pages/crazyclown/gcoin.vue'),
+      meta: {
+        title: `G-Coin 購買 | ${brandDisplayName}`,
+        description: 'G-Coin 是 Crazy_Clown 戰隊的獨家貨幣，可以購買戰隊獨享優惠。',
+        layout: 'default',
+        requiresAuth: false,
+        roles: ['admin', 'user', 'guest'],
+        seo: {
+          sitemap: true,
+          sitemapXml: true,
+          robots: true,
+        },
+        ui: {
+          navbar: true,
+          navbarOrder: 3,
+        },
+      },
+    },
+    {
       path: '/join',
       name: `${brandName}-Join`,
       component: () => import('@/pages/crazyclown/join.vue'),
@@ -69,7 +90,7 @@ export const pageConfig: PageConfig = {
         },
         ui: {
           navbar: true,
-          navbarOrder: 3,
+          navbarOrder: 4,
         },
       },
     },

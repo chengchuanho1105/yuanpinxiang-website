@@ -13,7 +13,7 @@ import DecorSection from '@/components/DecorSection.vue'
 import { useHybridData } from '@/composables/useHybridData'
 
 // ---------- 資料來源 ----------
-import localNewsData from '@/data/pageData/news/newsData.json' // 本地新聞資料
+import localNewsData from '@/data/pageData/yuanpinxiang/news/newsData.json' // 本地新聞資料
 
 /** ========== News Data 資料處裡 ========== */
 

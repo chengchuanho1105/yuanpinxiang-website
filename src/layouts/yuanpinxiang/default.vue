@@ -15,7 +15,7 @@ import Footer from '@/components/layouts/Footer.vue'
 
 // ---------- 工具函式與資料來源 ----------
 import { useHybridData } from '@/composables/useHybridData'
-import localHomeCarouselData from '@/data/pageData/home/carouselData.json' // 本地輪播圖資料
+import localHomeCarouselData from '@/data/pageData/yuanpinxiang/home/carouselData.json' // 本地輪播圖資料
 
 // 判斷是否為首頁
 const route = useRoute() // 取得當前路由
