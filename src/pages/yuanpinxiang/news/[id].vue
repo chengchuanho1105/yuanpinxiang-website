@@ -2,7 +2,7 @@
 import { useRoute } from 'vue-router'
 import { computed, onMounted } from 'vue'
 import { useHybridData } from '@/composables/useHybridData'
-import rawLocalNewsData from '@/data/pageData/news/newsData.json'
+import rawLocalNewsData from '@/data/pageData/yuanpinxiang/news/newsData.json'
 
 // 直接使用原始資料，先轉 unknown 再轉 Record<string, string>[]
 const localNewsData = rawLocalNewsData as unknown as Record<string, string>[]
