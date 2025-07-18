@@ -51,8 +51,6 @@ const {
   mapProductListData
 )
 
-console.log(productListData)
-
 const usd2twd = ref(30)
 const USD2TWD_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRBdBIEkQ5g_U0tXrNAdLXwaViW_NhBPy3EwPhiiJ3oX8vinj-K69yBeVHtJmbVFXPBqY7i09Os5GTE/pub?gid=1049789859&single=true&output=csv'
 async function fetchUsd2Twd() {
@@ -85,7 +83,7 @@ const filteredList = computed(() =>
 )
 
 
-interface ProductItem { amount: string; price: string; usd: string; currency?: string; gcoin?: string; }
+interface ProductItem { name: string; price: string; usd: string; currency?: string; gcoin?: string; }
 const tooltip = ref<{ visible: boolean; x: number; y: number; item: ProductItem | null; arrowLeft?: number }>({ visible: false, x: 0, y: 0, item: null })
 function showTooltip(e: MouseEvent | TouchEvent, item: ProductItem) {
   tooltip.value.visible = true
@@ -169,9 +167,9 @@ onBeforeUnmount(() => {
         <div class="max-w-xl mx-auto my-4 overflow-x-auto border border-zinc-200 dark:border-zinc-700 rounded-xl p-2">
           <table class="gcoin-table w-full min-w-[320px] text-base border-separate border-spacing-y-2">
             <thead>
-              <tr class="text-base text-end text-zinc-600 dark:text-zinc-300 ">
-                <th class="py-2 px-2">商品名稱</th>
-                <th class="py-2 px-2">優惠價</th>
+              <tr class="text-base text-zinc-600 dark:text-zinc-300 ">
+                <th class="py-2 px-2 text-center">商品名稱</th>
+                <th class="py-2 px-2 text-end">優惠價</th>
               </tr>
             </thead>
             <tbody>
@@ -181,11 +179,11 @@ onBeforeUnmount(() => {
                   ? 'bg-yellow-100 dark:bg-yellow-700 text-yellow-900 dark:text-yellow-100 font-bold ring-2 ring-yellow-400/20'
                   : 'bg-zinc-50 dark:bg-zinc-800 hover:bg-indigo-50 dark:hover:bg-indigo-900'
               ]"
-                @mouseenter="showTooltip($event, { amount: item.name, price: String(item.specialPrice), usd: String(item.usd ?? ''), gcoin: String(item.gcoin ?? ''), currency: item.currency })"
-                @mousemove="showTooltip($event, { amount: item.name, price: String(item.specialPrice), usd: String(item.usd ?? ''), gcoin: String(item.gcoin ?? ''), currency: item.currency })"
+                @mouseenter="showTooltip($event, { name: item.name, price: String(item.specialPrice), usd: String(item.usd ?? ''), gcoin: String(item.gcoin ?? ''), currency: item.currency })"
+                @mousemove="showTooltip($event, { name: item.name, price: String(item.specialPrice), usd: String(item.usd ?? ''), gcoin: String(item.gcoin ?? ''), currency: item.currency })"
                 @mouseleave="hideTooltip"
-                @click="toggleTooltip($event, { amount: item.name, price: String(item.specialPrice), usd: String(item.usd ?? ''), gcoin: String(item.gcoin ?? ''), currency: item.currency })">
-                <td class="py-2 px-2 font-semibold whitespace-nowrap text-end">
+                @click="toggleTooltip($event, { name: item.name, price: String(item.specialPrice), usd: String(item.usd ?? ''), gcoin: String(item.gcoin ?? ''), currency: item.currency })">
+                <td class="py-2 px-2 font-semibold whitespace-nowrap text-center">
                   {{ item.name }}
                 </td>
                 <td
@@ -210,11 +208,10 @@ onBeforeUnmount(() => {
           <i class="bi bi-info-circle"></i> 注意事項
         </h3>
         <ul class="list-disc pl-6 text-yellow-800 dark:text-yellow-100 space-y-1">
-          <li>本服務僅限 CrazyClown 戰隊成員及熟識玩家。</li>
           <li>購買前請先於 Discord 聯絡確認庫存與即時價格。</li>
           <li>付款方式以新台幣（TWD）為主，支援多種轉帳方式。</li>
           <li>購買前請提供正確的 PUBG ID 以利紀錄。</li>
-          <li>G-Coin 會以 <span class='font-bold text-indigo-700 dark:text-indigo-200'>CDK（序號）</span> 方式發放，請於遊戲內自行兌換。</li>
+          <li>商品會以 <span class='font-bold text-indigo-700 dark:text-indigo-200'>CDK（序號）</span> 方式發放，請於遊戲內自行兌換。</li>
           <li>交易完成後，CDK 會於 24 小時內發送至指定聯絡方式。</li>
           <li>如遇官方維護或特殊狀況，發送時間可能延遲，請耐心等候。</li>
         </ul>
@@ -241,8 +238,8 @@ onBeforeUnmount(() => {
     class="gcoin-tooltip-popup">
     <div class="gcoin-tooltip-arrow" :style="{ left: tooltip.arrowLeft + 'px' }"></div>
     <div class="gcoin-tooltip-content">
-      <div class="font-semibold mb-1">
-        {{ tooltip.item?.amount }}
+      <div class="font-semibold mb-1 text-center">
+        {{ tooltip.item?.name }}
       </div>
       <hr class="my-2 border-zinc-200 dark:border-zinc-700">
       <div v-if="tooltip.item?.currency === 'usd'" class="flex font-semibold text-base">
@@ -266,7 +263,7 @@ onBeforeUnmount(() => {
       </div>
       <hr class="my-2 border-zinc-200 dark:border-zinc-700">
       <div class="flex font-semibold text-base text-green-600 dark:text-green-400 mt-1">
-        -優惠額 TWD<span class="ml-auto">
+        －優惠額 TWD<span class="ml-auto">
           <template v-if="tooltip.item?.currency === 'usd'">
             {{ (Number(tooltip.item?.price) - parseFloat(tooltip.item?.usd || '0') * usd2twd).toLocaleString(undefined,
               { maximumFractionDigits: 0 }) }}
@@ -278,7 +275,7 @@ onBeforeUnmount(() => {
         </span>
       </div>
       <div class="flex font-semibold text-base text-indigo-700 dark:text-indigo-300 mt-1">
-        =優惠價 TWD <span class="ml-auto">{{ Number(tooltip.item?.price).toLocaleString() }}</span>
+        ＝優惠價 TWD <span class="ml-auto">{{ Number(tooltip.item?.price).toLocaleString() }}</span>
       </div>
     </div>
   </div>
