@@ -10,8 +10,8 @@ defineProps<{
       bg-gradient-to-br from-indigo-100 via-white/70 to-sky-100
       dark:bg-gradient-to-br dark:from-indigo-800 dark:via-indigo-900/80 dark:to-sky-800">
     <!-- 中文大標 -->
-    <h2 class="text-2xl font-bold relative z-10 text-indigo-900 dark:text-indigo-100" data-aos="fade-up-left">
-      {{ mainTitle }}
+    <h2 class="text-2xl font-bold relative z-10 text-indigo-900 dark:text-indigo-100" data-aos="fade-up-left"
+      v-html="mainTitle">
     </h2>
     <!-- 英文大標疊底裝飾 -->
     <div class="absolute right-5 top-0 z-0 pointer-events-none select-none" data-aos="fade-up-right">

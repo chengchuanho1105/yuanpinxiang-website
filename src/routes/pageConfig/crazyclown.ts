@@ -52,11 +52,11 @@ export const pageConfig: PageConfig = {
       },
     },
     {
-      path: '/gcoin',
-      name: `${brandName}-Gcoin`,
-      component: () => import('@/pages/crazyclown/gcoin.vue'),
+      path: '/store',
+      name: `${brandName}-Store`,
+      component: () => import('@/pages/crazyclown/store.vue'),
       meta: {
-        title: `G-Coin 購買 | ${brandDisplayName}`,
+        title: `特惠商店 | ${brandDisplayName}`,
         description: 'G-Coin 是 Crazy_Clown 戰隊的獨家貨幣，可以購買戰隊獨享優惠。',
         layout: 'default',
         requiresAuth: false,

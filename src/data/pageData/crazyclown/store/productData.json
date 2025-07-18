@@ -1,0 +1,98 @@
+[
+  {
+    "category": "G-Coin",
+    "currency": "usd",
+    "name": "11,200G×5單",
+    "usd": 99.99,
+    "specialPrice": 13570,
+    "hotSale": true
+  },
+  {
+    "category": "G-Coin",
+    "currency": "usd",
+    "name": "11,200G",
+    "usd": 99.99,
+    "specialPrice": 2744,
+    "hotSale": true
+  },
+  {
+    "category": "G-Coin",
+    "currency": "usd",
+    "name": "5,500G",
+    "usd": 49.99,
+    "specialPrice": 1399,
+    "hotSale": false
+  },
+  {
+    "category": "G-Coin",
+    "currency": "usd",
+    "name": "2,700G",
+    "usd": 24.99,
+    "specialPrice": 699,
+    "hotSale": false
+  },
+  {
+    "category": "G-Coin",
+    "currency": "usd",
+    "name": "1,050G",
+    "usd": 9.99,
+    "specialPrice": 289,
+    "hotSale": false
+  },
+  {
+    "category": "G-Coin",
+    "currency": "usd",
+    "name": "510G",
+    "usd": 4.99,
+    "specialPrice": 144,
+    "hotSale": false
+  },
+  {
+    "category": "G-Coin",
+    "currency": "usd",
+    "name": "100G",
+    "usd": 0.99,
+    "specialPrice": 26,
+    "hotSale": false
+  },
+  {
+    "category": "PIGFF 聯名套裝",
+    "currency": "gcoin",
+    "name": "套裝全套",
+    "gcoin": 2590,
+    "specialPrice": 749,
+    "hotSale": true
+  },
+  {
+    "category": "PIGFF 聯名套裝",
+    "currency": "gcoin",
+    "name": "戰術女僕套裝",
+    "gcoin": 990,
+    "specialPrice": 249,
+    "hotSale": false
+  },
+  {
+    "category": "PIGFF 聯名套裝",
+    "currency": "gcoin",
+    "name": "戰術突擊套裝",
+    "gcoin": 990,
+    "specialPrice": 249,
+    "hotSale": false
+  },
+  {
+    "category": "PIGFF 聯名套裝",
+    "currency": "gcoin",
+    "name": "背包套裝",
+    "gcoin": 1290,
+    "specialPrice": 299,
+    "hotSale": false
+  },
+  {
+    "category": "PIGFF 聯名套裝",
+    "currency": "gcoin",
+    "name": "武器套裝",
+    "gcoin": 2290,
+    "specialPrice": 649,
+    "hotSale": false
+  }
+]
