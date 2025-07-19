@@ -12,31 +12,7 @@ const { brandInfo } = useCurrentBrand()
 
 <template>
   <div class="min-h-screen">
-    <!-- Hero Section -->
-    <section class="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-blue-950 dark:to-indigo-900 py-20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-          <h1 class="text-4xl md:text-6xl font-bold text-blue-900 dark:text-blue-100 mb-6">
-            銓生活服務工作室
-          </h1>
-          <p class="text-xl md:text-2xl text-blue-700 dark:text-blue-200 mb-8">
-            為您的生活提供便利與無限可能
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="#services"
-              class="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
-              <i class="bi bi-gear mr-2"></i>
-              查看服務
-            </a>
-            <a href="#contact"
-              class="inline-flex items-center px-8 py-3 border-2 border-blue-600 text-blue-600 dark:text-blue-400 rounded-lg font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors">
-              <i class="bi bi-envelope mr-2"></i>
-              聯絡我們
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     <!-- About Section -->
     <section id="about" class="py-20 bg-white dark:bg-gray-900">

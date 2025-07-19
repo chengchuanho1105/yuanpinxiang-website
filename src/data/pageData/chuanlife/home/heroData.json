@@ -1,0 +1,42 @@
+[
+  {
+    "title": "關於我們",
+    "description": "銓生活服務工作室致力於提供優質的服務<br>以專業的技術、貼心的服務，讓您的需求得到最完美的解決方案。",
+    "buttonText": "了解更多",
+    "buttonLink": "/chuanlife/about",
+    "align": "left",
+    "bgImage": "https://i.meee.com.tw/aznTjXB.jpg",
+    "aos": "fade-right",
+    "scrollDown": true
+  },
+  {
+    "title": "專業服務項目",
+    "description": "網站設計、貼圖代購、3C產品代購等多元服務，滿足您的各種需求，歡迎洽詢！",
+    "buttonText": "服務總覽",
+    "buttonLink": "/chuanlife/services",
+    "align": "right",
+    "bgImage": "https://i.meee.com.tw/mLXgJw7.jpg",
+    "aos": "fade-left",
+    "scrollDown": true
+  },
+  {
+    "title": "最新活動",
+    "description": "掌握銓生活最新消息、優惠活動與服務公告，精彩內容不容錯過。",
+    "buttonText": "更多消息",
+    "buttonLink": "/chuanlife/news",
+    "align": "left",
+    "bgImage": "https://i.meee.com.tw/cb7NGZf.jpg",
+    "aos": "fade-right",
+    "scrollDown": true
+  },
+  {
+    "title": "聯絡我們",
+    "description": "有任何需求或疑問，歡迎隨時聯絡我們，專人為您服務。",
+    "buttonText": "聯絡資訊",
+    "buttonLink": "/chuanlife/contact",
+    "align": "right",
+    "bgImage": "https://i.meee.com.tw/em2VbZL.jpg",
+    "aos": "fade-left",
+    "scrollDown": false
+  }
+]

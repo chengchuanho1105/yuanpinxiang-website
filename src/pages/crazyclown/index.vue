@@ -11,7 +11,7 @@ import FeatureImageSection from '@/components/FeatureImageSection.vue'
 import { useHybridData } from '@/composables/useHybridData'
 
 // ---------- 資料來源 ----------
-import localHomeHeroData from '@/data/pageData/crazyclown/home/heroData.json' // 本地輪播圖資料
+import localHomeHeroData from '@/data/pageData/crazyclown/home/heroData.json'
 
 /** ========== Home Hero Data 資料處裡 ========== */
 
@@ -69,22 +69,18 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen">
-    <div class="min-h-screen">
-      <div v-if="homeHeroLoading" class="flex justify-center items-center py-20">
-        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
-        <span class="ml-3 text-gray-600 dark:text-gray-300">載入中...</span>
-      </div>
-      <div v-else-if="homeHeroData.length === 0" class="bg-red-50 ...">
-        <p class="text-sm text-red-700 dark:text-red-300">無法載入首頁資料</p>
-      </div>
-      <template v-else>
-        <FeatureImageSection v-for="item in homeHeroData" :key="item.title" :title="item.title"
-          :description="item.description" :button-text="item.buttonText" :button-link="item.buttonLink"
-          :align="item.align" :bg-image="item.bgImage" :aos="item.aos" :scroll-down="item.scrollDown" />
-      </template>
-    </div>
+  <div v-if="homeHeroLoading" class="flex justify-center items-center py-20">
+    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+    <span class="ml-3 text-gray-600 dark:text-gray-300">載入中...</span>
   </div>
+  <div v-else-if="homeHeroData.length === 0" class="bg-red-50 ...">
+    <p class="text-sm text-red-700 dark:text-red-300">無法載入首頁資料</p>
+  </div>
+  <template v-else>
+    <FeatureImageSection v-for="item in homeHeroData" :key="item.title" :title="item.title"
+      :description="item.description" :button-text="item.buttonText" :button-link="item.buttonLink" :align="item.align"
+      :bg-image="item.bgImage" :aos="item.aos" :scroll-down="item.scrollDown" />
+  </template>
 </template>
 
 <style scoped></style>
