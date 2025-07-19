@@ -13,7 +13,8 @@ export const pageConfig: PageConfig = {
       component: () => import(`@/pages/${brandName}/index.vue`),
       meta: {
         title: `首頁 | ${brandDisplayName}`,
-        description: '',
+        description:
+          '銓生活服務工作室致力於提供優質的網站設計、貼圖代購、3C產品代購和服務， 為您的生活提供便利與無限可能。',
         layout: 'default',
         requiresAuth: false,
         roles: ['admin', 'user', 'guest'],

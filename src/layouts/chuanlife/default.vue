@@ -35,21 +35,21 @@ const isHomePage = computed(() => {
 
                 <div class="max-w-prose text-left" data-aos="zoom-in">
                   <h3 class="font-bold text-gray-800 dark:text-gray-400 sm:text-5xl">
-                    <span class="text-2xl md:text-4xl text-indigo-800 dark:text-gray-100">S級戰隊·強者集結</span> <br>
-                    <span class="text-3xl md:text-5xl text-indigo-800 dark:text-gray-100">Crazy_Clown</span>
-                    <span class="text-3xl md:text-5xl text-gray-800 dark:text-gray-300">與您並肩而戰</span>
+                    <span class="text-2xl md:text-4xl text-indigo-800 dark:text-gray-100">服務用心・品質至上</span> <br>
+                    <span class="text-3xl md:text-5xl text-indigo-800 dark:text-gray-100">銓生活服務！</span>
+                    <span class="text-3xl md:text-5xl text-gray-800 dark:text-gray-300">與您同在</span>
                   </h3>
 
                   <p class="mt-4 text-xl text-pretty text-gray-700 dark:text-gray-300">
-                    <strong class="text-indigo-700 dark:text-gray-100">PUBG:Crazy_Clown是你最佳的戰友陣線！</strong><br>
-                    無論你是剛起步的新手，還是久經沙場的老兵，只要你是高活躍玩家，要的就是你！<br>
+                    <strong class="text-indigo-700 dark:text-gray-100">專注每個細節，打造專屬於你的理想服務！</strong><br>
+                    從品質感生活到數位科技，用心傾聽每一位客戶的需求，提供客製化且高品質服務。<br>
                   </p>
 
                   <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 sm:mt-6">
                     <router-link
                       class="inline-block rounded-lg border border-blue-200 px-5 py-3 font-medium text-center text-blue-700 dark:text-blue-300 shadow-sm transition-colors hover:bg-blue-50 hover:text-blue-900"
-                      to="/crazyclown/join" title="加入我們" data-aos="fade-up">
-                      入隊申請
+                      to="/chuanlife/about" data-aos="fade-up">
+                      了解更多
                     </router-link>
 
                     <router-link
@@ -57,16 +57,6 @@ const isHomePage = computed(() => {
                       to="/crazyclown/store" data-aos="fade-up">
                       特惠商店
                     </router-link>
-
-                    <a class="inline-block rounded-lg border border-green-200 px-5 py-3 font-medium text-center text-green-700 dark:text-green-300 shadow-sm transition-colors hover:bg-green-50 hover:text-green-900"
-                      @click.prevent="scrollTo('#home-event')" href="" data-aos="fade-up">
-                      最新活動
-                    </a>
-
-                    <a class="inline-block rounded-lg border border-indigo-200 px-5 py-3 font-medium text-center text-indigo-700 dark:text-indigo-300 shadow-sm transition-colors hover:bg-indigo-50 hover:text-indigo-900"
-                      href=" https://discord.gg/3TEHPZhYUK" data-aos="fade-up">
-                      Discord 社群
-                    </a>
                   </div>
                 </div>
 

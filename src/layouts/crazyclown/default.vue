@@ -48,7 +48,7 @@ const isHomePage = computed(() => {
                   <div class="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4 sm:mt-6">
                     <router-link
                       class="inline-block rounded-lg border border-blue-200 px-5 py-3 font-medium text-center text-blue-700 dark:text-blue-300 shadow-sm transition-colors hover:bg-blue-50 hover:text-blue-900"
-                      to="/crazyclown/join" title="加入我們" data-aos="fade-up">
+                      to="/crazyclown/join" data-aos="fade-up">
                       入隊申請
                     </router-link>
 
