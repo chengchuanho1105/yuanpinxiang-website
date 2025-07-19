@@ -8,13 +8,12 @@ function wrapBrandRoutes(routes: RouteRecordRaw[], mainBrand: string, brands: st
 
   for (const brand of brands) {
     if (brand === mainBrand) {
-      // 主品牌用根路徑
+      // 主品牌：包含根路徑（/）開頭的所有路由
       brandRoutes.push(
         ...routes
-          .filter((r) => r.path.startsWith(`/${brand}`))
+          .filter((r) => !brands.some((b) => b !== mainBrand && r.path.startsWith(`/${b}`)))
           .map((r) => ({
             ...r,
-            path: r.path.replace(`/${brand}`, ''), // 移除品牌前綴
             meta: { ...r.meta, brand },
           })),
       )

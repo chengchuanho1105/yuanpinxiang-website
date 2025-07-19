@@ -76,6 +76,7 @@ export function useCurrentBrand() {
   const brandTermsOfService = computed(() => brandInfo.value?.termsOfService)
   const brandPrivacyPolicy = computed(() => brandInfo.value?.privacyPolicy)
   const brandCopyright = computed(() => brandInfo.value?.copyright)
+  const brandCopyrightUrl = computed(() => brandInfo.value?.copyrightUrl)
   const brandReturnPolicy = computed(() => brandInfo.value?.returnPolicy)
   const brandExchangePolicy = computed(() => brandInfo.value?.exchangePolicy)
   const brandCancellationPolicy = computed(() => brandInfo.value?.cancellationPolicy)
@@ -142,6 +143,7 @@ export function useCurrentBrand() {
     brandTermsOfService,
     brandPrivacyPolicy,
     brandCopyright,
+    brandCopyrightUrl,
     brandReturnPolicy,
     brandExchangePolicy,
     brandCancellationPolicy,

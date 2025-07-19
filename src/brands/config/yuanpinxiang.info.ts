@@ -17,7 +17,8 @@ export const brandInfoConfig: BrandInfoConfig = {
   accentColor: '#000000', // 品牌強調色
   slogan: '源自初心滋養廣，品餘至誠鑄芬芳，香隨歲月傳千里，讚立人間業世昌。', // 品牌口號
   websiteUrl: 'https://yuanpinxiang.com', // 品牌網站
-  copyright: '© 2025 Chuan Life. All rights reserved.', // 版權
+  copyright: 'Chuan Life', // 版權方
+  copyrightUrl: 'https://chuan.life', // 版權方Url
   contactEmail: 'a0965814092@gmail.com', // 聯絡信箱
   contactPhone: '0965814092', // 聯絡電話
   paymentMethods: ['bank-transfer', 'cash'], // 付款方式

@@ -17,7 +17,8 @@ export const brandInfoConfig: BrandInfoConfig = {
   accentColor: '#000000', // 品牌強調色
   slogan: '不瘋，不成團', // 品牌口號
   websiteUrl: 'https://chuan.life/crazyclown', // 品牌網站
-  copyright: '© 2025 Crazy Clown. All rights reserved.', // 版權
+  copyright: 'Chuan Life', // 版權方
+  copyrightUrl: 'https://chuan.life', // 版權方Url
   contactEmail: 'pubg.crazyclown.2023@gmail.com', // 聯絡信箱
   paymentMethods: ['bank-transfer', 'cash'], // 付款方式
   language: 'zh-TW', // 語言

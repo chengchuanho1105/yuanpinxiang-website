@@ -17,7 +17,8 @@ export const brandInfoConfig: BrandInfoConfig = {
   accentColor: '#000000', // 品牌強調色
   slogan: '生活，就是一種態度', // 品牌口號
   websiteUrl: 'https://chuan.life', // 品牌網站
-  copyright: '© 2025 Chuan Life. All rights reserved.', // 版權
+  copyright: 'Chuan Life', // 版權方
+  copyrightUrl: 'https://chuan.life', // 版權方Url
   contactEmail: 'contact@chuan.life', // 聯絡信箱
   paymentMethods: ['bank-transfer', 'cash'], // 付款方式
   language: 'zh-TW', // 語言

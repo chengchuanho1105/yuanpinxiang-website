@@ -14,7 +14,8 @@ export interface BrandInfoConfig {
   websiteUrl?: string // 品牌網站
   termsOfService?: string // 服務條款
   privacyPolicy?: string // 隱私政策
-  copyright?: string // 版權
+  copyright?: string // 版權方
+  copyrightUrl: string // 版權方Url
   contactEmail?: string // 聯絡信箱
   contactPhone?: string // 聯絡電話
   contactAddress?: string // 聯絡地址

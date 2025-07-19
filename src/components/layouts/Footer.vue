@@ -5,7 +5,7 @@ defineOptions({ name: 'LayoutFooter' })
 import { useCurrentBrand } from '@/composables/useCurrentBrand'
 import { useNavbarLinks } from '@/composables/useNavbarLinks'
 
-const { brandDisplayName, brandWebsiteUrl, brandContactEmail, brandContactPhone, brandContactAddress, brandSocial, brandLogo } = useCurrentBrand()
+const { brandDisplayName, brandWebsiteUrl, brandContactEmail, brandContactPhone, brandContactAddress, brandSocial, brandLogo, brandCopyright, brandCopyrightUrl } = useCurrentBrand()
 const { navbarLinks } = useNavbarLinks()
 const year = new Date().getFullYear()
 
@@ -113,7 +113,7 @@ const logoUrl = computed(() => {
     <div
       class="w-full bg-gradient-to-t from-gray-100/80 dark:from-gray-900/80 to-transparent py-4 mt-2 rounded-b-2xl shadow-inner">
       <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-500 dark:text-gray-500 tracking-wide">
-        &copy; {{ year }} {{ brandDisplayName }} 版權所有。
+        &copy; {{ year }} <a :href="brandCopyrightUrl">{{ brandCopyright }}</a> 版權所有。
       </div>
     </div>
   </footer>
