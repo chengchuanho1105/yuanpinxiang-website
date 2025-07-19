@@ -4,40 +4,71 @@ import { brandInfoConfig } from './chuanlife.info'
 import ogImage from '@/assets/media/og-img/chuanlife/og-img.png'
 
 export const brandSEOConfig: BrandSEOConfig = {
-  defaultTitle: brandInfoConfig.shortName, // 預設標題
-  defaultDescription: brandInfoConfig.slogan || '', // 預設描述
-  keywords: ['chuanlife'], // 關鍵字
+  defaultTitle: brandInfoConfig.shortName,
+  defaultDescription: brandInfoConfig.slogan || brandInfoConfig.fullName,
+  keywords: [
+    '銓生活',
+    'Chuan Life',
+    '生活態度',
+    '品味生活',
+    '生活美學',
+    '生活風格',
+    '生活品質',
+    '生活體驗',
+    '生活服務',
+    '生活顧問',
+    '生活規劃',
+    '生活設計',
+    '生活管理',
+    '生活諮詢',
+    '生活指導',
+    '生活改善',
+    '生活優化',
+    '生活提升',
+    '生活轉變',
+    '生活進化',
+    '生活升級',
+    '生活改造',
+    '生活重塑',
+    '生活再造',
+    '生活創新',
+    '生活突破',
+    '生活超越',
+    '生活卓越',
+    '生活完美',
+    '生活理想',
+  ],
 
-  canonicalUrl: brandInfoConfig.websiteUrl, // 規範網址
-  alternateLocales: ['zh-TW', 'en-US'], // 替代語言
+  canonicalUrl: brandInfoConfig.websiteUrl,
+  alternateLocales: ['zh-TW', 'en-US'],
 
-  ogTitle: brandInfoConfig.shortName, // Open Graph標題
-  ogDescription: brandInfoConfig.slogan || '', // Open Graph描述
-  ogImage: ogImage, // Open Graph圖片
-  ogType: 'website', // Open Graph類型
-  ogUrl: brandInfoConfig.websiteUrl, // Open Graph網址
-  ogSiteName: brandInfoConfig.shortName, // Open Graph網站名稱
-  ogLocale: brandInfoConfig.language, // Open Graph語言
-  ogLocaleAlternate: ['en-US'], // Open Graph替代語言
-  ogImageWidth: 600, // Open Graph圖片寬度
-  ogImageHeight: 400, // Open Graph圖片高度
+  ogTitle: brandInfoConfig.shortName,
+  ogDescription: brandInfoConfig.slogan || '',
+  ogImage: ogImage,
+  ogType: 'website',
+  ogUrl: brandInfoConfig.websiteUrl,
+  ogSiteName: brandInfoConfig.shortName,
+  ogLocale: brandInfoConfig.language,
+  ogLocaleAlternate: ['en-US'],
+  ogImageWidth: 600,
+  ogImageHeight: 400,
 
-  twitterCard: 'summary_large_image', // Twitter卡片
-  twitterTitle: brandInfoConfig.shortName, // Twitter標題
-  twitterDescription: brandInfoConfig.slogan || '', // Twitter描述
-  twitterImage: ogImage, // Twitter圖片
-  twitterUrl: brandInfoConfig.websiteUrl, // Twitter網址
-  twitterSite: brandInfoConfig.social?.twitter?.url, // Twitter網站
-  twitterCreator: brandInfoConfig.social?.twitter?.name, // Twitter創作者
-  twitterCreatorId: brandInfoConfig.social?.twitter?.id, // Twitter創作者ID
+  twitterCard: 'summary_large_image',
+  twitterTitle: brandInfoConfig.shortName,
+  twitterDescription: brandInfoConfig.slogan || '',
+  twitterImage: ogImage,
+  twitterUrl: brandInfoConfig.websiteUrl,
+  twitterSite: brandInfoConfig.social?.twitter?.url,
+  twitterCreator: brandInfoConfig.social?.twitter?.name,
+  twitterCreatorId: brandInfoConfig.social?.twitter?.id,
 
-  robots: 'index, follow', // 機器人
+  robots: 'index, follow',
 
-  googleSiteVerification: 'google-site-verification=1234567890', // Google站台驗證
-  googleAnalytics: 'G-1234567890', // Google Analytics
-  googleSearchConsole: 'G-1234567890', // Google Search Console
-  googleTagManager: 'G-1234567890', // Google Tag Manager
-  googleAds: 'G-1234567890', // Google Ads
-  googleAdsense: 'G-1234567890', // Google AdSense
-  googleAnalytics4: 'G-1234567890', // Google Analytics 4
+  googleSiteVerification: 'google-site-verification=1234567890',
+  googleAnalytics: 'G-1234567890',
+  googleSearchConsole: 'G-1234567890',
+  googleTagManager: 'G-1234567890',
+  googleAds: 'G-1234567890',
+  googleAdsense: 'G-1234567890',
+  googleAnalytics4: 'G-1234567890',
 }

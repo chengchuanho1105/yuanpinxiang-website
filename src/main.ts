@@ -7,6 +7,7 @@ AOS.init({ duration: 500, once: false, offset: 50 })
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { createHead } from '@unhead/vue/client'
+import { setupFavicon } from '@/routes/hook/setFavicon'
 import { setupPageTitleDescription } from '@/routes/hook/setTitlrDescription'
 import { setupPageSeo } from '@/routes/hook/setSeo'
 
@@ -19,6 +20,7 @@ const head = createHead()
 app.use(createPinia())
 app.use(router)
 
+setupFavicon(router)
 setupPageTitleDescription(router)
 setupPageSeo(router)
 
