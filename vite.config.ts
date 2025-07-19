@@ -16,6 +16,7 @@ export default defineConfig({
     Pages({
       dirs: [
         { dir: 'src/pages/yuanpinxiang', baseRoute: 'yuanpinxiang' },
+        { dir: 'src/pages/chuanlife', baseRoute: 'chuanlife' },
         { dir: 'src/pages/crazyclown', baseRoute: 'crazyclown' },
       ],
       extensions: ['vue'],

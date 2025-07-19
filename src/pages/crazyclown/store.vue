@@ -51,7 +51,8 @@ const {
   mapProductListData
 )
 
-const usd2twd = ref(30)
+const usd2twd = ref(30.9)
+const FEE = 1.03
 const USD2TWD_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRBdBIEkQ5g_U0tXrNAdLXwaViW_NhBPy3EwPhiiJ3oX8vinj-K69yBeVHtJmbVFXPBqY7i09Os5GTE/pub?gid=1049789859&single=true&output=csv'
 async function fetchUsd2Twd() {
   try {
@@ -69,7 +70,7 @@ onMounted(() => {
   fetchUsd2Twd()
 })
 
-const GCOIN2TWD = computed(() => usd2twd.value / 100) // 1 G-Coin = 1/100 USD * 匯率
+const GCOIN2TWD = computed(() => usd2twd.value / 100 * FEE) // 1 G-Coin = 1/100 USD * 匯率 * 手續費
 
 // 以 category 為分頁
 const tabs = computed(() => {
@@ -251,13 +252,10 @@ onBeforeUnmount(() => {
       <div class="flex font-semibold text-base">
         原價 TWD <span class="ml-auto">
           <template v-if="tooltip.item?.currency === 'usd'">
-            {{ (parseFloat(tooltip.item?.usd || '0') * usd2twd).toLocaleString(undefined, { maximumFractionDigits: 0 })
-            }}
+            {{ Math.round(parseFloat(tooltip.item?.usd || '0') * usd2twd * FEE).toLocaleString() }}
           </template>
           <template v-else-if="tooltip.item?.currency === 'gcoin'">
-            {{ (parseFloat(tooltip.item?.gcoin || '0') * GCOIN2TWD).toLocaleString(undefined, {
-              maximumFractionDigits: 0
-            }) }}
+            {{ Math.round(parseFloat(tooltip.item?.gcoin || '0') * GCOIN2TWD).toLocaleString() }}
           </template>
         </span>
       </div>
@@ -265,12 +263,12 @@ onBeforeUnmount(() => {
       <div class="flex font-semibold text-base text-green-600 dark:text-green-400 mt-1">
         －優惠額 TWD<span class="ml-auto">
           <template v-if="tooltip.item?.currency === 'usd'">
-            {{ (Number(tooltip.item?.price) - parseFloat(tooltip.item?.usd || '0') * usd2twd).toLocaleString(undefined,
-              { maximumFractionDigits: 0 }) }}
+            {{ Math.round(Number(tooltip.item?.price) - parseFloat(tooltip.item?.usd || '0') * usd2twd *
+              FEE).toLocaleString() }}
           </template>
           <template v-else-if="tooltip.item?.currency === 'gcoin'">
-            {{ (Number(tooltip.item?.price) - parseFloat(tooltip.item?.gcoin || '0') *
-              GCOIN2TWD).toLocaleString(undefined, { maximumFractionDigits: 0 }) }}
+            {{ Math.round(Number(tooltip.item?.price) - parseFloat(tooltip.item?.gcoin || '0') *
+              GCOIN2TWD).toLocaleString() }}
           </template>
         </span>
       </div>

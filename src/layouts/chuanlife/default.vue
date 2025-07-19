@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineOptions({ name: 'Layout-CrazyClown-Default' })
+defineOptions({ name: 'Layout-ChuanLife-Default' })
 
 // ---------- Vue 核心工具函式 ----------
 import { computed } from 'vue'
@@ -13,7 +13,7 @@ import Footer from '@/components/layouts/Footer.vue'
 // 判斷是否為首頁
 const route = useRoute() // 取得當前路由
 const isHomePage = computed(() => {
-  return route.path === '/crazyclown' || route.path === '/crazyclown/'
+  return route.path === '/chuanlife' || route.path === '/chuanlife/'
 })
 
 </script>
@@ -29,7 +29,7 @@ const isHomePage = computed(() => {
               <div class="mx-auto w-screen max-w-screen-xl px-5 md:grid md:grid-cols-2 md:items-center md:gap-5">
 
                 <div class="w-full flex items-center justify-center mb-10 md:mb-0 rounded-xl" data-aos="zoom-in">
-                  <img class="h-[25svh] md:h-[50svh] rounded-xl" src="@/assets/media/logo/crazyclown/logo-light.png"
+                  <img class="h-[25svh] md:h-[50svh] rounded-xl" src="@/assets/media/logo/chuanlife/logo-light.png"
                     alt="">
                 </div>
 
@@ -73,11 +73,10 @@ const isHomePage = computed(() => {
               </div>
             </div>
           </section>
-
         </template>
         <template v-else>
           <div class="relative w-full h-full bg-black">
-            <img src="/src/assets/media/og-img/crazyclown/og-img.png"
+            <img src="/src/assets/media/og-img/chuanlife/og-img.png"
               class="absolute inset-0 w-full h-full object-cover">
             <div class="absolute inset-0 bg-black/40"></div>
             <div class="relative z-10 flex flex-col items-center justify-center h-full">
