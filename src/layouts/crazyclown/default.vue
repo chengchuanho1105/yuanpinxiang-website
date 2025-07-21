@@ -2,8 +2,8 @@
 defineOptions({ name: 'Layout-CrazyClown-Default' })
 
 // ---------- Vue 核心工具函式 ----------
-import { computed } from 'vue'
-import { RouterView, useRoute } from 'vue-router'
+import { RouterView } from 'vue-router'
+import { useIsHomePage } from '@/composables/useIsHomePage'
 
 import Navbar from '@/components/layouts/navbar/Navbar.vue'
 import Banner from '@/components/layouts/Banner.vue'
@@ -11,11 +11,7 @@ import Breadcrumb from '@/components/layouts/Breadcrumb.vue'
 import Footer from '@/components/layouts/Footer.vue'
 
 // 判斷是否為首頁
-const route = useRoute() // 取得當前路由
-const isHomePage = computed(() => {
-  return route.path === '/crazyclown' || route.path === '/crazyclown/'
-})
-
+const { isHomePage } = useIsHomePage()
 </script>
 
 <template>

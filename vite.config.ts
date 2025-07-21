@@ -15,17 +15,13 @@ export default defineConfig({
     vueJsx(),
     vueDevTools(),
     Pages({
-      dirs: [
-        { dir: 'src/pages/yuanpinxiang', baseRoute: '' },
-        { dir: 'src/pages/chuanlife', baseRoute: 'chuanlife' },
-        { dir: 'src/pages/crazyclown', baseRoute: 'crazyclown' },
-      ],
+      dirs: [{ dir: 'src/pages', baseRoute: '' }],
       extensions: ['vue'],
       // 這裡整合 sitemap 產生
       onRoutesGenerated: (routes) => {
         generateSitemap({
           routes,
-          hostname: 'https://chuan.life',
+          hostname: 'https://yuanpinxiang.com',
         })
       },
     }),

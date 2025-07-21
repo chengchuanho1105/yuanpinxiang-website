@@ -10,7 +10,7 @@ export const pageConfig: PageConfig = {
     {
       path: '/',
       name: `${brandName}-Home`,
-      component: () => import('@/pages/yuanpinxiang/index.vue'),
+      component: () => import(`@/pages/${brandName}/index.vue`),
       meta: {
         title: `首頁 | ${brandDisplayName}`,
         description:
@@ -32,7 +32,7 @@ export const pageConfig: PageConfig = {
     {
       path: '/about',
       name: `${brandName}-About`,
-      component: () => import('@/pages/yuanpinxiang/about.vue'),
+      component: () => import(`@/pages/${brandName}/about.vue`),
       meta: {
         title: `關於我們 | ${brandDisplayName}`,
         description:
@@ -54,7 +54,7 @@ export const pageConfig: PageConfig = {
     {
       path: '/product',
       name: `${brandName}-Product`,
-      component: () => import('@/pages/yuanpinxiang/product/index.vue'),
+      component: () => import(`@/pages/${brandName}/product/index.vue`),
       meta: {
         title: `產品 | ${brandDisplayName}`,
         description:
@@ -76,7 +76,7 @@ export const pageConfig: PageConfig = {
         {
           path: 'list',
           name: `${brandName}-Product-List`,
-          component: () => import('@/pages/yuanpinxiang/product/list/index.vue'),
+          component: () => import(`@/pages/${brandName}/product/list/index.vue`),
           meta: {
             title: `產品列表 | ${brandDisplayName}`,
             description:
@@ -98,7 +98,7 @@ export const pageConfig: PageConfig = {
         {
           path: 'list/:id',
           name: `${brandName}-Product-List-Detail`,
-          component: () => import('@/pages/yuanpinxiang/product/list/[id].vue'),
+          component: () => import(`@/pages/${brandName}/product/list/[id].vue`),
           meta: {
             title: `產品詳情 | ${brandDisplayName}`,
             description: '',
@@ -118,7 +118,7 @@ export const pageConfig: PageConfig = {
         {
           path: 'certification',
           name: `${brandName}-Product-Certification`,
-          component: () => import('@/pages/yuanpinxiang/product/certification.vue'),
+          component: () => import(`@/pages/${brandName}/product/certification.vue`),
           meta: {
             title: `產品認證 | ${brandDisplayName}`,
             description:
@@ -142,7 +142,7 @@ export const pageConfig: PageConfig = {
     {
       path: '/media',
       name: `${brandName}-Media`,
-      component: () => import('@/pages/yuanpinxiang/media.vue'),
+      component: () => import(`@/pages/${brandName}/media.vue`),
       meta: {
         title: `媒體介紹 | ${brandDisplayName}`,
         description:
@@ -164,7 +164,7 @@ export const pageConfig: PageConfig = {
     {
       path: '/news',
       name: `${brandName}-News`,
-      component: () => import('@/pages/yuanpinxiang/news/index.vue'),
+      component: () => import(`@/pages/${brandName}/news/index.vue`),
       meta: {
         title: `最新消息 | ${brandDisplayName}`,
         description:
@@ -186,7 +186,7 @@ export const pageConfig: PageConfig = {
         {
           path: ':id',
           name: `${brandName}-News-Detail`,
-          component: () => import('@/pages/yuanpinxiang/news/[id].vue'),
+          component: () => import(`@/pages/${brandName}/news/[id].vue`),
           meta: {
             title: `最新消息詳情 | ${brandDisplayName}`,
             description: '',
@@ -208,7 +208,7 @@ export const pageConfig: PageConfig = {
     {
       path: '/faq',
       name: `${brandName}-Faq`,
-      component: () => import('@/pages/yuanpinxiang/faq.vue'),
+      component: () => import(`@/pages/${brandName}/faq.vue`),
       meta: {
         title: `常見問題 | ${brandDisplayName}`,
         description:
@@ -230,7 +230,7 @@ export const pageConfig: PageConfig = {
     {
       path: '/contact',
       name: `${brandName}-Contact`,
-      component: () => import('@/pages/yuanpinxiang/contact.vue'),
+      component: () => import(`@/pages/${brandName}/contact.vue`),
       meta: {
         title: `聯絡我們 | ${brandDisplayName}`,
         description:

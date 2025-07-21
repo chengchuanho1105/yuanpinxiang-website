@@ -2,8 +2,9 @@
 defineOptions({ name: 'Layout-Yuanpinxiang-Default' })
 
 // ---------- Vue 核心工具函式 ----------
-import { computed, onMounted } from 'vue'
-import { RouterView, useRoute } from 'vue-router'
+import { onMounted } from 'vue'
+import { RouterView } from 'vue-router'
+import { useIsHomePage } from '@/composables/useIsHomePage'
 
 // ---------- 組件引入區（版面用） ----------
 import Navbar from '@/components/layouts/navbar/Navbar.vue'
@@ -18,10 +19,7 @@ import { useHybridData } from '@/composables/useHybridData'
 import localHomeCarouselData from '@/data/pageData/yuanpinxiang/home/carouselData.json' // 本地輪播圖資料
 
 // 判斷是否為首頁
-const route = useRoute() // 取得當前路由
-const isHomePage = computed(() => {
-  return route.path === '/'
-})
+const { isHomePage } = useIsHomePage()
 
 /** ========== Home Carousel Data 資料處裡 ========== */
 

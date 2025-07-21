@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch, onMounted, onUnmounted, nextTick, type ComponentPublicInstance } from 'vue'
-import { videos, articles } from '../../pageData/media'
+import { videos, articles } from '../pageData/media'
 import DecorSection from '@/components/DecorSection.vue'
 defineOptions({ name: 'YuanPinXiang-Media' })
 
